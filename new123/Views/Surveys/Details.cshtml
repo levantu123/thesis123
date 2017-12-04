@@ -1,0 +1,74 @@
+﻿@model new123.Models.Survey
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>Survey</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.SurveyName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SurveyName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SupplierID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SupplierID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CategoryID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NumberOfQuestion)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NumberOfQuestion)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SurveyJson)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SurveyJson)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Discontinued)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Discontinued)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SurveyID }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

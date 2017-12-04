@@ -1,0 +1,14 @@
+﻿
+<span data-bind="text: sname"></span>
+<span data-bind="text: index"></span>
+<div class="page-block" data-bind="foreach: pages">
+    <span data-bind="text:$index"></span>
+    <input type="button" value="Remove" data-bind="click: $parent.removePage" />
+    <div data-bind="sortable: questions" class="question-block">
+        <div>
+            <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/tmp_questions'}"></div>
+        </div>
+    </div>
+</div>
+<input type="button" value="Add page" data-bind="click: addPage" />
+

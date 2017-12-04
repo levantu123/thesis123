@@ -1,0 +1,15 @@
+﻿@model new123.Models.Survey
+
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/SurveyEditLayout.cshtml";
+}
+<script type="text/javascript">
+
+    surveryid = @Html.DisplayFor(model => model.SurveyID);
+</script>
+<h2>Form</h2>
+<div id='survey-content'>
+    <div class="survey-area" data-bind="template: { name: whichTemplateToUse4, data: items3 }"></div>
+</div>
+<div><input type="button" value="Submit" onclick="SubmitResponseToDatabase()" /></div>

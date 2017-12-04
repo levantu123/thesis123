@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="https://www.tsurvey.com" />
+  <setParameter name="DefaultConnection-Web.config Connection String" value="Data Source=DESKTOP-BH7C43S;AttachDbFilename=&quot;C:\Users\levan\Documents\Visual Studio 2017\Projects\new123\new123\App_Data\aspnet-new123-20170508090830.mdf&quot;;User ID=admin;Password=admin" />
+  <setParameter name="SurveyDbEntities-Web.config Connection String" value="metadata=res://*/Models.SurveyDb.csdl|res://*/Models.SurveyDb.ssdl|res://*/Models.SurveyDb.msl;provider=System.Data.SqlClient;provider connection string='Data Source=DESKTOP-BH7C43S;AttachDbFilename=&quot;C:\Users\levan\Documents\Visual Studio 2017\Projects\new123\new123\App_Data\SurveyDb.mdf&quot;;User ID=admin;Password=admin'" />
+</parameters>

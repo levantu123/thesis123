@@ -1,0 +1,25 @@
+﻿@model new123.Models.Survey
+
+@{
+    ViewBag.Title = "jEdit";
+    Layout = "~/Views/Shared/SurveyEditLayout.cshtml";
+}
+<script type="text/javascript">
+    
+    surveryid = @Html.DisplayFor(model => model.SurveyID);
+
+</script>
+<h2>jEdit</h2>
+
+<div id='survey-menu'>
+    <div class="survey-menu-area" data-bind="template: { name: whichTemplateToUse2, data: items2 }"></div>
+</div>
+
+<div id='survey-content'>
+    <div class="survey-area" data-bind="template: { name: whichTemplateToUse, data: items }"></div>
+</div>
+<div><input type="button" value="Save" onclick="updateSurveyData()" /></div>
+<div>@Html.ActionLink("Preview", "Preview", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>
+<div>@Html.ActionLink("Public", "Form", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>
+
+

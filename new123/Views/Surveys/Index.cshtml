@@ -1,0 +1,72 @@
+﻿@model IEnumerable<new123.Models.Survey>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupplierID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CategoryID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfQuestion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SurveyJson)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Discontinued)
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupplierID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumberOfQuestion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SurveyJson)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Discontinued)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.SurveyID }) |
+                @Html.ActionLink("jEdit", "jEdit", new { id = item.SurveyID }) |
+                @Html.ActionLink("Details", "Details", new { id=item.SurveyID }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.SurveyID })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

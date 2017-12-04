@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sitemanifest>
+  <IisApp path="C:\Users\levan\documents\visual studio 2017\Projects\new123\new123\obj\Debug\Package\PackageTmp" />
+  <setAcl path="C:\Users\levan\documents\visual studio 2017\Projects\new123\new123\obj\Debug\Package\PackageTmp" setAclResourceType="Directory" />
+  <setAcl path="C:\Users\levan\documents\visual studio 2017\Projects\new123\new123\obj\Debug\Package\PackageTmp" setAclUser="anonymousAuthenticationUser" setAclResourceType="Directory" />
+</sitemanifest>

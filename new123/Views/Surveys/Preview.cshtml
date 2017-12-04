@@ -1,0 +1,18 @@
+﻿@model new123.Models.Survey
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/SurveyEditLayout.cshtml";
+}
+<script type="text/javascript">
+
+    surveryid = @Html.DisplayFor(model => model.SurveyID);
+
+</script>
+<h2>View</h2>
+
+<div id='survey-content'>
+    <div class="survey-area" data-bind="template: { name: whichTemplateToUse3, data: items }"></div>
+</div>
+<div>@Html.ActionLink("Public", "Form", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>
+<div>@Html.ActionLink("Back", "jEdit", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>

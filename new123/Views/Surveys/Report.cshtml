@@ -1,0 +1,15 @@
+﻿@model new123.Models.Survey
+
+@{
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/SurveyEditLayout.cshtml";
+}
+<script type="text/javascript">
+
+    surveryid = @Html.DisplayFor(model => model.SurveyID);
+</script>
+<h2>Report</h2>
+<div id='survey-content'>
+    <div class="report-area" data-bind="template: { name: whichTemplateToUse5, data: items4 }"></div>
+</div>
+

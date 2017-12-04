@@ -1,0 +1,16 @@
+﻿<div class="question-mask">
+    <span>Question </span><span data-bind="text: $index"></span>
+    <div class="q-btns">
+        <input type="checkbox" value="Edit" data-bind="checked: inedit" />
+        <input type="button" value="Remove" data-bind="click: $parent.removeQuestion" />
+    </div>
+</div>
+<div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
+<div class="q-shortdescription"><h4 data-bind="text: shortdescription, visible: useshortdescription"></h4></div>
+<input type="text" />
+<div class="edit" data-bind="visible: inedit">
+    <input type="checkbox" value="Required" data-bind="checked: isrequired" />
+    <div class="q-title"><h5><span>Question</span></h5></div>
+    <input data-bind="value: title" />
+    <input data-bind="value: shortdescription" />
+</div>
