@@ -11,16 +11,28 @@
 <select data-bind="foreach: choices" class="q-choices">
         <option data-bind="text: choice_value"></option>
 </select>
-<div class="edit" data-bind="visible: inedit">
-    <input type="checkbox" value="Required" data-bind="checked: isrequired" />
-    <div class="q-title"><h5><span>Question</span></h5></div>
-    <input data-bind="value: title"/>
-    <input data-bind="value: shortdescription" />
-    <div class="q-title-edit"><h5><span>Options</span></h5></div>
-    <div data-bind="foreach: choices" class="q-choices-edit">
-        <input data-bind="value: choice_value"/>
+<div class="edit" data-bind="visible: inedit">  
+    <div class="q-title-edit">
+        <h5><span>Question</span></h5>
+        <input data-bind="value: title" />
     </div>
-    <button value="Add More" data-bind="click:addchoice"></button>
+    <div class="q-required-edit">
+        <span>Required </span><input type="checkbox" data-bind="checked:isrequired"/>
+    </div>
+    <div class="q-description-edit">
+        <span>Use Short Description</span>
+        <input type="checkbox" data-bind="checked: useshortdescription" />
+        <span data-bind="visible: useshortdescription">Short Description</span>
+        <input data-bind="value: shortdescription, visible : useshortdescription" />
+    </div>   
+    <div class="q-options-edit">
+        <h5><span>Options</span></h5>
+        <div data-bind="foreach: choices" class="q-choices-edit">
+            <span>Option </span><span data-bind="text: $index"></span>
+            <input data-bind="value: choice_value" />
+        </div>
+        <input type="button" value="Add More" data-bind="click:addchoice"/>
+    </div>
 </div>
 
 
