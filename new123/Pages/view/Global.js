@@ -8,18 +8,15 @@
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([{
-            "choice_value": "Option 1",
-            "score": 0
-        }])),
         choices: ko.observableArray(obsChoices([
             {
                 choice_value: 'Option 1',
-                nextpage: -1
-
+                nextpage: -1,
+                score: 0
             }])),
-        addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+        addchoice: function ()
+        {
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score : ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),
@@ -42,14 +39,13 @@ function newDropdown() {
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([{
-            "choice_value": "Option 1",
-            "score": 0
-        }])),
         choices: ko.observableArray(obsChoices([
-            { choice_value: 'Option 1', nextpage: -1 }])),
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0 }])),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),
@@ -72,10 +68,9 @@ function newTextbox() {
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([])),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),
@@ -97,10 +92,9 @@ function newPharagraph() {
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([])),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),
@@ -124,17 +118,14 @@ function newnMultiple() {
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([{
-            "choice_value": "Option 1",
-            "score": 0
-        }])),
         choices: ko.observableArray(obsChoices([
             {
                 choice_value: 'Option 1',
-                nextpage: -1
+                nextpage: -1,
+                score: 0
             }])),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),
@@ -158,17 +149,14 @@ function newnDropdown() {
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([{
-            "choice_value": "Option 1",
-            "score": 0
-        }])),
         choices: ko.observableArray(obsChoices([
             {
                 choice_value: 'Option 1',
-                nextpage: -1
+                nextpage: -1,
+                score: 0
             }])),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),
@@ -192,10 +180,9 @@ function newnTextbox() {
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([])),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),
@@ -218,10 +205,9 @@ function newnPharagraph() {
         isrequired: ko.observable(false),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
-        scoretable: ko.observableArray(obsscoretable([])),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1) }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
             used: ko.observable(false),

@@ -41,19 +41,15 @@ namespace new123.Models
         public bool nextpagedetect { get; set; }
         public bool isscored { get; set; }
         public choice[] choices { get; set; }
-        public scoredetail[] scoretable { get; set; }
         public requiredcontent requiredcontent { get; set; }
     }
     public class choice
     {
         public string choice_value { get; set; }
         public int nextpage { get; set; }
-    }
-    public class scoredetail
-    {
-        public string choice_value { get; set; }
         public int score { get; set; }
     }
+    
     public class requiredcontent
     {
         public bool used { get; set; }

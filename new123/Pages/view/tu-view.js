@@ -32,11 +32,11 @@ function ObjectKoQuestion(question) {
         nextpagedetect: ko.observable(question.nextpagedetect),
         isscored: ko.observable(question.isscored),
         choices: ko.observableArray(obsChoices(question.choices)),
-        scoretable: ko.observableArray(obsscoretable(question.scoretable)),
+        
         requiredcontent: ko.observable(obsrequiredcontent(question.requiredcontent)),
         inedit: ko.observable(false),
         addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option') }));
+            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         }     
     }
 }

@@ -31,25 +31,14 @@ function obsChoices(choices) {
     choices.forEach(function (choice) {
         var temp_choice = {
             choice_value: ko.observable(choice.choice_value),
-            nextpage: ko.observable(choice.nextpage)
+            nextpage: ko.observable(choice.nextpage),
+            score: ko.observable(choice.score)
         };
         temp_choices.push(ko.observable(temp_choice));
     });
     return temp_choices;
 }
-function obsscoretable(scoretable)
-{
-    var temp_scoretable = [];
-    scoretable.forEach(function (scoredetail)
-    {
-        var temp_scoredetail = {
-            choice_value: ko.observable(scoredetail.choice_value),
-            score: ko.observable(scoredetail.score)
-        };
-        temp_scoretable.push(ko.observable(temp_scoredetail));
-    });
-    return temp_scoretable;
-}
+
 function obsrequiredcontent(requiredcontent)
 {
     return {

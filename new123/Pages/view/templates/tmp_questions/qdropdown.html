@@ -36,6 +36,10 @@
             <div class="edit-block">
                 <span>Option </span><span data-bind="text: $index"></span>
                 <input data-bind="value: choice_value" />
+                <span data-bind="visible:$parent.isscored">Score</span>
+                <input type="number" data-bind="value: score, visible:$parent.isscored"/>
+                <span data-bind="visible:$parent.nextpagedetect">Next page</span>
+                <input type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
             </div>      
         </div>
         <input type="button" value="Add More" data-bind="click:addchoice"/>
@@ -45,13 +49,12 @@
             <span>Score feature</span>
             <input type="checkbox" data-bind="checked: isscored" />
         </div>
-        <div class="q-scoretable-edit" data-bind="visible: isscored">
-            <div data-bind="foreach: scoretable">
-                <div class="edit-block">
-                    <span data-bind="text: choice_value"></span>
-                    <input type="number" step="0.01" data-bind="value: score" />
-                </div>
-            </div>
+        
+    </div>
+    <div class="q-detect-edit edit-block">
+        <div class="edit-block">
+            <span>Use to detect next page </span>
+            <input type="checkbox" data-bind="checked:nextpagedetect"/>
         </div>
     </div>
 </div>
