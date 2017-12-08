@@ -41,7 +41,7 @@ namespace new123.Models
             var surveys = _database.GetCollection<Mgsurvey>("surveys");
             var solutions = _database.GetCollection<MgSolution>("Solution");
 
-            string newsurstring = "{\"index\":" + this.SurveyID.ToJson() + ", \"sname\": " + this.SurveyName.ToJson() + ", \"shortdescription\": \"\"" + ", \"pages\": [{page_title: \"untitle\", shortdescription: \"\", questions:[]}]}";
+            string newsurstring = "{\"index\":" + this.SurveyID.ToJson() + ", \"sname\": " + this.SurveyName.ToJson() + ", \"shortdescription\": \"\"" + ", nextqid: 1, \"pages\": [{page_title: \"untitle\", shortdescription: \"\", questions:[]}]}";
             string newsolstring = "{\"index\":" + this.SurveyID.ToJson() + ", \"responses\": []}";
             Mgsurvey newsur = JsonConvert.DeserializeObject<Mgsurvey>(newsurstring);
             MgSolution newsol = JsonConvert.DeserializeObject<MgSolution>(newsolstring);

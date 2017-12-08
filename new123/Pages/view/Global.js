@@ -1,5 +1,6 @@
 ﻿function newMultiple() {
     return {
+        qid: survey1.nextqid,
         btype: 'bmultiple',
         qtype: ko.observable('qmultiple'),
         title: ko.observable('New Multiple'),
@@ -30,7 +31,8 @@
 }
 
 function newDropdown() {
-    return {
+    var pself = {
+        qid: survey1.nextqid,
         btype: 'bdropdown',
         qtype: ko.observable('qdropdown'),
         title: ko.observable('New Dropdown'),
@@ -43,8 +45,10 @@ function newDropdown() {
             {
                 choice_value: 'Option 1',
                 nextpage: -1,
-                score: 0 }])),
-        addchoice: function () {
+                score: 0
+            }])),
+        addchoice: function ()
+        {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
@@ -54,12 +58,18 @@ function newDropdown() {
             must: ko.observableArray([]),
             mustnot: ko.observableArray([])
         }),
-        inedit: ko.observable(false)
-    }
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
 }
 
 function newTextbox() {
-    return {
+    var pself = {
+        qid: survey1.nextqid,
         btype: 'btextbox',
         qtype: ko.observable('qtextbox'),
         title: ko.observable('New Textbox'),
@@ -69,7 +79,8 @@ function newTextbox() {
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
-        addchoice: function () {
+        addchoice: function ()
+        {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
@@ -79,11 +90,17 @@ function newTextbox() {
             must: ko.observableArray([]),
             mustnot: ko.observableArray([])
         }),
-        inedit: ko.observable(false)
-    }
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
 }
 function newPharagraph() {
-    return {
+    var pself = {
+        qid: survey1.nextqid,
         btype: 'bparagraph',
         qtype: ko.observable('qparagraph'),
         title: ko.observable('New Paragraph'),
@@ -93,7 +110,8 @@ function newPharagraph() {
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
-        addchoice: function () {
+        addchoice: function ()
+        {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
@@ -103,12 +121,17 @@ function newPharagraph() {
             must: ko.observableArray([]),
             mustnot: ko.observableArray([])
         }),
-        inedit: ko.observable(false)
-    }
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
 }
 //--------------------------------------------------------------------------------------------------
 function newnMultiple() {
-    return {
+    var pself = {
         isdefault: true,
         btype: 'bmultiple',
         qtype: ko.observable('qmultiple'),
@@ -124,7 +147,8 @@ function newnMultiple() {
                 nextpage: -1,
                 score: 0
             }])),
-        addchoice: function () {
+        addchoice: function ()
+        {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
@@ -134,12 +158,17 @@ function newnMultiple() {
             must: ko.observableArray([]),
             mustnot: ko.observableArray([])
         }),
-        inedit: ko.observable(false)
-    }
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
 }
 
 function newnDropdown() {
-    return {
+    var pself = {
         isdefault: true,
         btype: 'bdropdown',
         qtype: ko.observable('qdropdown'),
@@ -155,7 +184,8 @@ function newnDropdown() {
                 nextpage: -1,
                 score: 0
             }])),
-        addchoice: function () {
+        addchoice: function ()
+        {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
@@ -165,12 +195,17 @@ function newnDropdown() {
             must: ko.observableArray([]),
             mustnot: ko.observableArray([])
         }),
-        inedit: ko.observable(false)
-    }
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
 }
 
 function newnTextbox() {
-    return {
+    var pself = {
         isdefault: true,
         btype: 'btextbox',
         qtype: ko.observable('qtextbox'),
@@ -181,7 +216,8 @@ function newnTextbox() {
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
-        addchoice: function () {
+        addchoice: function ()
+        {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
@@ -191,11 +227,16 @@ function newnTextbox() {
             must: ko.observableArray([]),
             mustnot: ko.observableArray([])
         }),
-        inedit: ko.observable(false)
-    }
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
 }
 function newnPharagraph() {
-    return {
+    var pself = {
         isdefault: true,
         btype: 'bparagraph',
         qtype: ko.observable('qparagraph'),
@@ -206,7 +247,8 @@ function newnPharagraph() {
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
-        addchoice: function () {
+        addchoice: function ()
+        {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         },
         requiredcontent: ko.observable({
@@ -216,8 +258,13 @@ function newnPharagraph() {
             must: ko.observableArray([]),
             mustnot: ko.observableArray([])
         }),
-        inedit: ko.observable(false)
-    }
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
 }
 //------------------------------------------------------------------------------------------------
 

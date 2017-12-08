@@ -21,8 +21,10 @@ function updateSurveyData() {
     return str;
 }
 
-function ObjectKoQuestion(question) {
-    return {
+function ObjectKoQuestion(question)
+{
+    var pself = {
+        qid: question.qid,
         btype: question.btype,
         qtype: ko.observable(question.qtype),
         title: ko.observable(question.title),
@@ -35,10 +37,15 @@ function ObjectKoQuestion(question) {
         
         requiredcontent: ko.observable(obsrequiredcontent(question.requiredcontent)),
         inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        }),
         addchoice: function () {
             this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
         }     
     }
+    return pself;
 }
 
 function ObjectKoPage(page)
@@ -69,12 +76,14 @@ function ObjectKoPage(page)
 function ObjectKoSurveyData(sjson) {
     var sid = sjson.index;
     var sname = sjson.sname;
+    var nextqid = sjson.nextqid;
     var sshortdescription = sjson.shortdescription;
     var spages = [];
     sjson.pages.forEach(function (page) {
         spages.push(ObjectKoPage(page));
     });
     var tself = {};
+    tself.nextqid = nextqid;
     tself.index = ko.observable(sid);
     tself.sname = ko.observable( sname );
     tself.shortdescription = ko.observable(sshortdescription);

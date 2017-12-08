@@ -27,6 +27,8 @@ namespace new123.Models
     }
     public class Answer
     {
+        public int qid { get; set; }
+        public string title { get; set; }
         public string text { get; set; }
     }
 }

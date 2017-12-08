@@ -44,8 +44,7 @@
     ko.bindingHandlers.sortable.afterMove = function (arg) {
         if (arg.item.isdefault) {
             arg.targetParent.replace(arg.item, new Task(arg.item.btype));
+            survey1.nextqid++;
         }
-        
-
     };
 })

@@ -12,13 +12,13 @@ namespace new123.Models
     {
         public ObjectId _id { get; set; }
         public int index { get; set; }
-
-        public string sname { get; set; }
+        public string sname { get; set; }     
         public string shortdescription { get; set; }
+        public int nextqid { get; set; }
         public page[] pages { get; set; }
         public string jsonstr()
         {
-            return "{\"index\":"+this.index.ToJson()+", \"sname\": " + this.sname.ToJson() + ", \"shortdescription\": " + this.shortdescription.ToJson() + ", \"pages\": " + this.pages.ToJson()+"}";
+            return "{\"index\":"+this.index.ToJson()+", \"sname\": " + this.sname.ToJson() + ", \"shortdescription\": " + this.shortdescription.ToJson() + ", \"nextqid\": " + this.nextqid.ToJson() + ", \"pages\": " + this.pages.ToJson()+"}";
         }
     }
 
@@ -32,6 +32,7 @@ namespace new123.Models
     }
     public class question
     {
+        public int qid { get; set; }
         public string qtype { get; set; }
         public string btype { get; set; }
         public string title { get; set; }
@@ -47,7 +48,7 @@ namespace new123.Models
     {
         public string choice_value { get; set; }
         public int nextpage { get; set; }
-        public int score { get; set; }
+        public double score { get; set; }
     }
     
     public class requiredcontent

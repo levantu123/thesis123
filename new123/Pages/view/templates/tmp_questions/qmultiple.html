@@ -14,13 +14,49 @@
     </div>
 </div>
 <div class="edit" data-bind="visible: inedit">
-    <input type="checkbox" value="Required" data-bind="checked: isrequired" />
-    <div class="q-title"><h5><span>Question</span></h5></div>
-    <input data-bind="value: title" />
-    <input data-bind="value: shortdescription" />
-    <div class="q-title-edit"><h5><span>Options</span></h5></div>
-    <div data-bind="foreach: choices" class="q-choices-edit">
-        <input data-bind="value: choice_value" />
+    <div class="q-title-edit edit-block">
+        <span>Question</span>
+        <input data-bind="value: title" />
     </div>
-    <button value="Add More" data-bind="click:addchoice"></button>
+    <div class="q-required-edit edit-block">
+        <span>Required </span>
+        <input type="checkbox" data-bind="checked:isrequired" />
+    </div>
+    <div class="q-description-edit edit-block">
+        <div class="edit-block">
+            <span>Use Short Description</span>
+            <input type="checkbox" data-bind="checked: useshortdescription" />
+        </div>
+        <div>
+            <span data-bind="visible: useshortdescription">Short Description</span>
+            <input data-bind="value: shortdescription, visible : useshortdescription" />
+        </div>
+    </div>
+    <div class="q-options-edit edit-block">
+        <h5><span>Options</span></h5>
+        <div data-bind="foreach: choices" class="q-choices-edit">
+            <div class="edit-block">
+                <span>Option </span><span data-bind="text: $index"></span>
+                <input data-bind="value: choice_value" />
+                <span data-bind="visible:$parent.isscored">Score</span>
+                <input type="number" data-bind="value: score, visible:$parent.isscored" />
+                <span data-bind="visible:$parent.nextpagedetect">Next page</span>
+                <input type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+            </div>
+        </div>
+        <input type="button" value="Add More" data-bind="click:addchoice" />
+    </div>
+    <div class="q-score-edit edit-block">
+        <div class="edit-block">
+            <span>Score feature</span>
+            <input type="checkbox" data-bind="checked: isscored" />
+        </div>
+
+    </div>
+    <div class="q-detect-edit edit-block">
+        <div class="edit-block">
+            <span>Use to detect next page </span>
+            <input type="checkbox" data-bind="checked:nextpagedetect" />
+        </div>
+    </div>
 </div>

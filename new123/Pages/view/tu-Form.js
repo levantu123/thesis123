@@ -35,6 +35,7 @@ function ObjectKoQuestionForm(question) {
         temp_options.push(choice.choice_value);
     });
     return {
+        qid: question.qid,
         btype: question.btype,
         qtype: ko.observable(question.qtype),
         title: ko.observable(question.title),
@@ -77,21 +78,36 @@ function getCurrentJsFormObject() {
 function getCurrentSolutionObject(data) {
     var answers = [];
     var text = '';
-    data.questions.forEach(function (question) {
-        if (question.btype === 'bdropdown') {
-            text = question.selectedOptions[0];
-        }
-        if (question.btype === 'bmultiple') {
-            text = question.answer;
-        }
-        if (question.btype === 'btextbox') {
-            text = question.answer;
-        }
-        if (question.btype === 'bparagraph') {
-            text = question.answer;
-        }
-        answers.push({ text: text });
+    data.pages.forEach(function (page)
+    {
+        page.questions.forEach(function (question)
+        {
+            if (question.btype === 'bdropdown')
+            {
+                text = question.selectedOptions[0];
+            }
+            if (question.btype === 'bmultiple')
+            {
+                text = question.answer;
+            }
+            if (question.btype === 'btextbox')
+            {
+                text = question.answer;
+            }
+            if (question.btype === 'bparagraph')
+            {
+                text = question.answer;
+            }
+            answers.push(
+                {
+                    qid: question.qid,
+                    title: question.title,
+                    text: text
+                });
+        });
     });
+
+    
     return {
         Timestamp: new Date().toLocaleString(),
         answers: answers
