@@ -27,14 +27,30 @@ function responseObject(response) {
     }
 }
 
+function getAllAnwserFromObSolution(objectsolution)
+{
+    return Array.prototype.concat.apply([], objectsolution.responses.map(r => r.answers));
+}
+function buildRowTemplateFromAllAnswers(Answers)
+{
+    var Questions = [];
+    Answers.forEach(function (answer)
+    {
+        if (!Questions.includes(answer.qid))
+        {
+            Questions.push(answer.qid);
+        }
+    });
+    return Questions;
+}
 function SolutionKoObject(objectsolution) {
     var temp_responses = [];
     objectsolution.responses.forEach(function (response) {
         temp_responses.push(responseObject(response));
     });
-    return {
+    var Sself= {
         index: objectsolution.index,
-        questions: getQuestionsList(JSON.parse(getSurveyDatajson() + "")),
         responses: ko.observableArray(temp_responses)
     };
+    return Sself;
 }
