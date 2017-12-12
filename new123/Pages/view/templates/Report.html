@@ -1,12 +1,17 @@
 ﻿<table>
     <thead>
-        
+        <tr data-bind="foreach: Questions">
+            <th data-bind="text: title"></th>
+        </tr>
     </thead>
     <tbody data-bind="foreach:responses">
         <tr data-bind="foreach:answers">
             <th>
-                <input type="text" data-bind="value:text"/>
+                <input type="text" data-bind="value:answer"/>
             </th>
         </tr>
     </tbody>
 </table>
+<div data-bind="foreach: Questions">
+    <canvas data-bind="attr:{id: 'chart' + qid}" width="200" height="400"></canvas>
+</div>

@@ -267,6 +267,7 @@
       <DependentUpon>SurveyDb.edmx</DependentUpon>
       <LastGenOutput>SurveyDb.cs</LastGenOutput>
     </Content>
+    <Content Include="Pages\src\js\Chart.js" />
     <Content Include="Pages\view\Global.js" />
     <Content Include="Pages\view\index.html" />
     <Content Include="Pages\view\main.js" />

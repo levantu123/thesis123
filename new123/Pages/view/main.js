@@ -47,4 +47,5 @@
             survey1.nextqid++;
         }
     };
+
 })
