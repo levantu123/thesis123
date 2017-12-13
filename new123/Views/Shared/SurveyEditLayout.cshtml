@@ -12,6 +12,16 @@
     @Styles.Render("~/Pages/src/css/content.css")
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    @Scripts.Render("~/Pages/src/js/jquery-ui.js")
+    @Scripts.Render("~/Pages/src/js/Chart.js")
+    @Scripts.Render("~/Pages/src/knockout-3.4.2.js")
+    @Scripts.Render("~/Pages/src/js/knockout-sortable.min.js")
+    @Scripts.Render("~/Pages/src/koExternalTemplateEngine_all.js")
+    
 
 </head>
 <body>
@@ -45,21 +55,7 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
-    @Scripts.Render("~/Pages/src/js/jquery-ui.js")
-    @Scripts.Render("~/Pages/src/js/Chart.js")
-    @Scripts.Render("~/Pages/src/knockout-3.4.2.js")
-    @Scripts.Render("~/Pages/src/js/knockout-sortable.min.js")
-    @Scripts.Render("~/Pages/src/koExternalTemplateEngine_all.js")
-    @Scripts.Render("~/Pages/view/Global.js")
-    @Scripts.Render("~/Pages/view/tu-menu.js")
-    @Scripts.Render("~/Pages/view/tu-view.js")
-    @Scripts.Render("~/Pages/view/tu-Form.js")
-    @Scripts.Render("~/Pages/view/tu-report.js")
-    @Scripts.Render("~/Pages/view/main.js")
+    
     
    
 </body>

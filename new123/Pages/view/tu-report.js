@@ -58,7 +58,14 @@ function buildRowTemplateFromAllAnswers(Answers)
         {
             QIds.push(answer.qid);
             QTitles.push(answer.title);
-            Questions.push({ qid: answer.qid, title: answer.title });
+            var Question = {
+                qid: answer.qid,
+                title: answer.title,
+                isShowPie: ko.observable(true),
+                isShowBar: ko.observable(true),
+                isShowLine: ko.observable(true),       
+            };
+            Questions.push(Question);
         }
         else
         {
@@ -71,6 +78,8 @@ function buildRowTemplateFromAllAnswers(Answers)
 function SolutionKoObject(objectsolution)
 {
     var Questions = buildRowTemplateFromAllAnswers(getAllAnwserFromObSolution(objectsolution));
+    var charts = buildRowTemplateFromAllAnswers(getAllAnwserFromObSolution(objectsolution));
+    charts.shift();
     var rows = [];
     objectsolution.responses.forEach(function (response)
     {
@@ -79,7 +88,8 @@ function SolutionKoObject(objectsolution)
     var Sself= {
         index: objectsolution.index,
         Questions: ko.observableArray(Questions),
-        responses: ko.observableArray(rows)
+        responses: ko.observableArray(rows),
+        Charts: ko.observableArray(charts)
     };
     return Sself;
 }
@@ -108,10 +118,10 @@ function get1column(column, objectsolution)
     return Cself;
 }
 
-function chartdata(column)
+function chartdata(column, type)
 {
     return {
-        type: "pie",  
+        type: type,  
 
         data: {
             labels: get1column(column, JSON.parse(getSolutionjson() + "")).label,
@@ -164,17 +174,23 @@ function chartdata(column)
 
 function getAllChart()
 {
-    var charts = [];
     var Questions = buildRowTemplateFromAllAnswers(getAllAnwserFromObSolution(JSON.parse(getSolutionjson() + "")));
     Questions.forEach(function (question)
-    {
-        var ctx = document.getElementById("chart" + question.qid.toString()).getContext('2d');
-        if (Questions.indexOf(question) > -1){
-            var chart = new Chart(ctx, chartdata(Questions.indexOf(question)));
-            charts.push(chart);
+    {    
+        if (Questions.indexOf(question) > 0)
+        {
+            var ctx1 = document.getElementById("chart-pie" + question.qid.toString()).getContext('2d');
+            var config1 = new chartdata(Questions.indexOf(question), "pie");         
+            var chart1 = new Chart(ctx1, config1); 
+
+            var ctx2 = document.getElementById("chart-bar" + question.qid.toString()).getContext('2d');
+            var config2 = new chartdata(Questions.indexOf(question), "bar");
+            var chart2 = new Chart(ctx2, config2); 
+
+            var ctx3 = document.getElementById("chart-line" + question.qid.toString()).getContext('2d');
+            var config3 = new chartdata(Questions.indexOf(question), "line");
+            var chart3 = new Chart(ctx3, config3); 
         };
         
     });
-    //charts.shift();
-    return charts;
 }

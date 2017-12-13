@@ -12,6 +12,16 @@
         </tr>
     </tbody>
 </table>
-<div data-bind="foreach: Questions">
-    <canvas data-bind="attr:{id: 'chart' + qid}" width="200" height="400"></canvas>
+<div data-bind="foreach: Charts">
+    <div style="width:500px">
+        <div>
+            <span data-bind="text: title"></span>
+        </div>
+        <span>Show Pie Chart </span><input type="checkbox" data-bind="checked: isShowPie"/>
+        <span>&nbsp; Show Bar Chart </span><input type="checkbox" data-bind="checked: isShowBar" />
+        <span>&nbsp; Show Line Chart </span><input type="checkbox" data-bind="checked: isShowLine" />
+        <canvas data-bind="attr:{id: 'chart-pie' + qid}, visible: isShowPie" width="200" height="400"></canvas>
+        <canvas data-bind="attr:{id: 'chart-bar' + qid}, visible: isShowBar" width="200" height="400"></canvas>
+        <canvas data-bind="attr:{id: 'chart-line' + qid}, visible: isShowLine" width="200" height="400"></canvas>
+    </div>
 </div>

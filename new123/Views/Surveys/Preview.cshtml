@@ -9,10 +9,14 @@
     surveryid = @Html.DisplayFor(model => model.SurveyID);
 
 </script>
+@Scripts.Render("~/Pages/view/Global.js")
+@Scripts.Render("~/Pages/view/tu-Form.js")
+@Scripts.Render("~/Pages/view/mainpreview.js")
+
 <h2>View</h2>
 
 <div id='survey-content'>
-    <div class="survey-area" data-bind="template: { name: whichTemplateToUse3, data: items }"></div>
+    <div class="survey-area" data-bind="template: { name: whichTemplateToUse3, data: items3 }"></div>
 </div>
 <div>@Html.ActionLink("Public", "Form", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>
 <div>@Html.ActionLink("Back", "jEdit", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>

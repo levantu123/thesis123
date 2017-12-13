@@ -20,24 +20,13 @@
         {
             isEditable: ko.observable(true),
             items: survey1,
-            items2: new ObjectKoMenu(),
-            items3: form,
-            items4: solution,
+            items2: new ObjectKoMenu(),           
             whichTemplateToUse2: function () {
                 return 'menu';
             },
             whichTemplateToUse: function () {
                 return 'view';
-            },
-            whichTemplateToUse3: function () {
-                return 'Preview';
-            },
-            whichTemplateToUse4: function () {
-                return 'Form';
-            },
-            whichTemplateToUse5: function () {
-                return 'Report';
-            }
+            }            
         });
   
 
@@ -47,5 +36,4 @@
             survey1.nextqid++;
         }
     };
-
 })

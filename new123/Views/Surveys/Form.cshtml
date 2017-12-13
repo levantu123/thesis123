@@ -8,6 +8,9 @@
 
     surveryid = @Html.DisplayFor(model => model.SurveyID);
 </script>
+@Scripts.Render("~/Pages/view/Global.js")
+@Scripts.Render("~/Pages/view/tu-Form.js")
+@Scripts.Render("~/Pages/view/mainform.js")
 <h2>Form</h2>
 <div id='survey-content'>
     <div class="survey-area" data-bind="template: { name: whichTemplateToUse4, data: items3 }"></div>

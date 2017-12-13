@@ -271,6 +271,9 @@
     <Content Include="Pages\view\Global.js" />
     <Content Include="Pages\view\index.html" />
     <Content Include="Pages\view\main.js" />
+    <Content Include="Pages\view\mainform.js" />
+    <Content Include="Pages\view\mainreport.js" />
+    <Content Include="Pages\view\mainpreview.js" />
     <Content Include="Pages\view\templates\edit.html" />
     <Content Include="Pages\view\templates\Form.html" />
     <Content Include="Pages\view\templates\form_questions\qdropdown.html" />

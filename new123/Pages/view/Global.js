@@ -322,3 +322,18 @@ function getSolutionjson() {
     });
     return str;
 }
+
+function obsChoices(choices)
+{
+    var temp_choices = [];
+    choices.forEach(function (choice)
+    {
+        var temp_choice = {
+            choice_value: ko.observable(choice.choice_value),
+            nextpage: ko.observable(choice.nextpage),
+            score: ko.observable(choice.score)
+        };
+        temp_choices.push(ko.observable(temp_choice));
+    });
+    return temp_choices;
+}
