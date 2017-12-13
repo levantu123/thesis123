@@ -34,7 +34,7 @@ function ObjectKoQuestionForm(question) {
     question.choices.forEach(function (choice) {
         temp_options.push(choice.choice_value);
     });
-    return {
+    var fself = {
         qid: question.qid,
         btype: question.btype,
         qtype: ko.observable(question.qtype),
@@ -42,26 +42,57 @@ function ObjectKoQuestionForm(question) {
         choices: obsChoices(question.choices),
         options: temp_options,
         answer: ko.observable(''),
-        selectedOptions: ko.observableArray([temp_options[0]])
-    }
+        selectedOptions: ko.observableArray([temp_options[0]]),
+        getscore: ko.pureComputed(function()
+        {
+            var choices = fself.choices;
+            var sc = -1;
+            choices.forEach(function (c)
+            {
+                if (fself.selectedOptions()[0] === c().choice_value())
+                {
+                    sc = c().score();
+                }
+            });          
+            return sc;
+        }, this),
+        getnextpage: ko.pureComputed(function ()
+        {
+            var choices = fself.choices;
+            var sc = -1;
+            choices.forEach(function (c)
+            {
+                if (fself.selectedOptions()[0] === c().choice_value())
+                {
+                    sc = c().nextpage();
+                }
+            });
+            return sc;
+        }, this)
+    };
+    return fself;
 }
 function ObjectKoPageForm(page) {
     var temp_questions = [];
     page.questions.forEach(function (question) {
         temp_questions.push(new ObjectKoQuestionForm(question));
     });
-    return {
-        questions: ko.observableArray(temp_questions)
+    var pself = {
+        questions: ko.observableArray(temp_questions),
+
     };
+    return pself;
 }
 
 function ObjectKoSurveyDataForm(sjson) {
     var sid = sjson.index;
     var sname = sjson.sname;
     var spages = [];
-    sjson.pages.forEach(function (page) {
-        spages.push(new ObjectKoPageForm(page));
+    sjson.pages.forEach(function (page)
+    {    
+         spages.push(new ObjectKoPageForm(page));      
     });
+    
     return {
         index: ko.observable(sid),
         sname: ko.observable(sname),

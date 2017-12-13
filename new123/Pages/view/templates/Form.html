@@ -1,9 +1,25 @@
 ﻿<span data-bind="text: sname"></span>
 <span data-bind="text: index"></span>
-<div data-bind="foreach:pages">
-    <div data-bind="foreach: questions" class="question-block">
-        <div>
-            <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
+<div >
+    <div data-bind="foreach:pages"  class="tab-content">
+        <div class="question-block tab-pane fade in active" data-bind="if: ($index()==0), visible:($index()==0),  attr: {id: (($index()==0)?'page' + ($index()+1):'none')}">
+            <div data-bind="foreach: questions">
+                <div>
+                    <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
+                </div>
+            </div>
+            <a data-toggle="tab" data-bind="attr: {href: '#page'+($index()+2)}">Next Page</a>
+            <a data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: '#page'+($index())}">Back</a>
         </div>
+        <div class="question-block tab-pane fade" data-bind="if: ($index()>0),visible: ($index()>0), attr: {id: (($index()>0)?'page' + ($index()+1):'none')}">
+            <div data-bind="foreach: questions">
+                <div>
+                    <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
+                </div>
+            </div>
+            <a data-toggle="tab" data-bind="attr: {href: '#page'+($index()+2)}">Next Page</a>
+            <a data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: '#page'+($index())}">Back</a>
+        </div>
+        
     </div>
 </div>
