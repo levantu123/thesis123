@@ -53,4 +53,25 @@
         </div>
         <input type="button" value="Add More" data-bind="click:addchoice" />
     </div>
+    <div class="q-required-content-edit edit-block" data-bind="with: requiredcontent">
+        <span>More options</span><br />
+        <span>Used </span> <input type="checkbox" data-bind="checked: used" />
+        <div data-bind="visible: used">
+            <span>Number only </span><input type="checkbox" data-bind="checked: isnumber" />
+            <span data-bind="visible:isnumber">Min value</span>
+            <input type="number" data-bind="visible:isnumber, value: nmin"/>
+            <span data-bind="visible:isnumber">Max value</span>
+            <input type="number" data-bind="visible:isnumber, value: nmax" />
+            <span data-bind="visible:!isnumber()">Min length</span>
+            <input type="number" data-bind="visible:!isnumber(), value: min" />
+            <span data-bind="visible:!isnumber()">Max length</span>
+            <input type="number" data-bind="visible:!isnumber(), value: min" />
+            <div data-bind="foreach: {data: must, as: 'm'}, visible:!isnumber()">
+                <input type="text" data-bind="value: m"/>
+            </div>
+            <div data-bind="foreach: {data: mustnot, as: 'm'}, visible:!isnumber()">
+                <input type="text" data-bind="value: m" />
+            </div>
+        </div>
+    </div>
 </div>

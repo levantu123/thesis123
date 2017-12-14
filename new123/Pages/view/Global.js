@@ -29,7 +29,20 @@
         inedit: ko.observable(false)
     }
 }
-
+function obsrequiredcontent(requiredcontent)
+{
+    var rself = {
+        used: ko.observable(requiredcontent.used),
+        isnumber: ko.observable(requiredcontent.isnumber),
+        min: ko.observable(requiredcontent.min),
+        max: ko.observable(requiredcontent.max),
+        nmin: ko.observable(requiredcontent.nmin),
+        nmax: ko.observable(requiredcontent.nmax),
+        must: ko.observableArray(requiredcontent.must),
+        mustnot: ko.observableArray(requiredcontent.mustnot)
+    };
+    return rself;
+}
 function newDropdown() {
     var pself = {
         qid: survey1.nextqid,

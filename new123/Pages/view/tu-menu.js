@@ -27,16 +27,7 @@ function element(e) {
 }
 
 
-function obsrequiredcontent(requiredcontent)
-{
-    return {
-        used: ko.observable(requiredcontent.used),
-        min: ko.observable(requiredcontent.min),
-        max: ko.observable(requiredcontent.max),
-        must: ko.observableArray(requiredcontent.must),
-        mustnot: ko.observableArray(requiredcontent.mustnot)
-    }
-}
+
 
 
 

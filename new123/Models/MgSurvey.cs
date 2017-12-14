@@ -56,6 +56,9 @@ namespace new123.Models
         public bool used { get; set; }
         public int min { get; set; }
         public int max { get; set; }
+        public bool isnumber { get; set; }
+        public int nmin { get; set; }
+        public int nmax { get; set; }
         public string [] must { get; set; }
         public string[] mustnot { get; set; }
     }

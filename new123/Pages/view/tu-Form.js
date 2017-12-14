@@ -40,35 +40,55 @@ function ObjectKoQuestionForm(question) {
         qtype: ko.observable(question.qtype),
         title: ko.observable(question.title),
         choices: obsChoices(question.choices),
+        required: question.required,
         options: temp_options,
         answer: ko.observable(''),
         selectedOptions: ko.observableArray([temp_options[0]]),
-        getscore: ko.pureComputed(function()
+        checkvalid: function ()
+        {
+            var valid = false;
+            if (fself.required)
+            {
+
+            }
+        },
+        getscore: function()
         {
             var choices = fself.choices;
             var sc = -1;
             choices.forEach(function (c)
             {
-                if (fself.selectedOptions()[0] === c().choice_value())
+                if (fself.answer() === c().choice_value())
                 {
                     sc = c().score();
                 }
             });          
             return sc;
-        }, this),
-        getnextpage: ko.pureComputed(function ()
+        },
+        getnextpage: function ()
         {
             var choices = fself.choices;
             var sc = -1;
             choices.forEach(function (c)
             {
-                if (fself.selectedOptions()[0] === c().choice_value())
+                if (fself.btype === "bdropdown")
                 {
-                    sc = c().nextpage();
+                    if (fself.selectedOptions()[0] === c().choice_value())
+                    {
+                        sc = c().nextpage();
+                    }
                 }
+                else
+                {
+                    if (fself.answer() === c().choice_value())
+                    {
+                        sc = c().nextpage();
+                    }
+                }
+                
             });
             return sc;
-        }, this)
+        }
     };
     return fself;
 }
@@ -79,7 +99,15 @@ function ObjectKoPageForm(page) {
     });
     var pself = {
         questions: ko.observableArray(temp_questions),
-
+        getnextpage: function ()
+        {
+            var sc = -1;
+            pself.questions().forEach(function (q)
+            {
+                sc = q.getnextpage();
+            });
+            return sc;
+        }
     };
     return pself;
 }
@@ -93,11 +121,62 @@ function ObjectKoSurveyDataForm(sjson) {
          spages.push(new ObjectKoPageForm(page));      
     });
     
-    return {
+    var sself=  {
         index: ko.observable(sid),
         sname: ko.observable(sname),
-        pages: ko.observableArray(spages)
+        pages: ko.observableArray(spages),
+        pagesshown: ko.observableArray([]),
+        nextpageadd: function (i)
+        {
+            var exits = false;
+            var lastindex = 0;
+            sself.pagesshown().forEach(function (p)
+            {             
+                if (p === i)
+                {
+                    exits = true;
+                    lastindex = sself.pagesshown.indexOf(p);
+                }
+            });
+            if (exits)
+            {
+                var k = sself.pagesshown().length;
+                for (j = lastindex; j < k; j++)
+                {
+                    sself.pagesshown().pop();
+                }
+            }
+            sself.pagesshown.push(i);
+        },
+        getlength: function ()
+        {
+            return sself.pages().length;
+        },
+        getbackpage: function (i)
+        {
+            var pi = -1;
+            var exits = false;
+            var lastindex = 0;
+            sself.pagesshown().forEach(function (p)
+            {
+                if (p === i)
+                {
+                    exits = true;
+                    lastindex = sself.pagesshown.indexOf(p);
+                }
+            });          
+            if (exits)
+            {
+                pi = sself.pagesshown()[lastindex - 1];
+            } else
+            {
+                pi = sself.pagesshown()[sself.pagesshown().length -1];
+            }
+       
+            return pi;
+        }
     };
+    return sself;
 }
 
 form = ObjectKoSurveyDataForm(JSON.parse(getSurveyDatajson() + ""));
