@@ -1,5 +1,11 @@
 ﻿<div class="question-mask">
-    <span>Question </span><span data-bind="text: $index"></span>
+    <span>Question </span><span data-bind="text: $index"></span> 
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
-<input type="text" data-bind="value:answer"/>
+<div data-bind="ifnot: required()">
+    <input type="text" data-bind="value:answer, attr:{pattern: regular()}" />
+</div>
+<div data-bind="if: required()">
+    <input type="text" required data-bind="ifnot: required(), value:answer, attr:{pattern: regular()}" />
+</div>
+

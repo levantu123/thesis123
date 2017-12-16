@@ -29,8 +29,25 @@
         inedit: ko.observable(false)
     }
 }
+
+
 function obsrequiredcontent(requiredcontent)
 {
+    var re = requiredcontent.must;
+    var ren = requiredcontent.mustnot;
+    var mustnws = [];
+    var mustws = [];
+    re.forEach(function (mw)
+    {
+        mustws.push({ svalue: ko.observable(mw.svalue) });
+    });
+    console.log(ko.toJSON(mustws));
+    ren.forEach(function (mnw)
+    {
+        mustnws.push({ value: ko.observable(mnw.svalue) });
+    });
+    
+
     var rself = {
         used: ko.observable(requiredcontent.used),
         isnumber: ko.observable(requiredcontent.isnumber),
@@ -38,8 +55,25 @@ function obsrequiredcontent(requiredcontent)
         max: ko.observable(requiredcontent.max),
         nmin: ko.observable(requiredcontent.nmin),
         nmax: ko.observable(requiredcontent.nmax),
-        must: ko.observableArray(requiredcontent.must),
-        mustnot: ko.observableArray(requiredcontent.mustnot)
+        must: ko.observableArray(mustws),
+        mustnot: ko.observableArray(mustnws),
+        addbanned: function ()
+        {
+            rself.mustnot.push({ svalue: ko.observable("some think")});
+        },
+        addmust: function ()
+        {
+            rself.must.push({ svalue: ko.observable("some think")});
+        },
+        removebanned: function ()
+        {
+            rself.mustnot.remove(this);
+        },
+        removemust: function ()
+        {
+            console.log("neeed");
+            rself.must.remove(this);
+        }
     };
     return rself;
 }

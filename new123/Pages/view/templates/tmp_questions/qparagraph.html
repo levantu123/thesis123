@@ -53,4 +53,29 @@
         </div>
         <input type="button" value="Add More" data-bind="click:addchoice" />
     </div>
+    <div class="q-required-content-edit edit-block" data-bind="with: requiredcontent">
+        <span>More options</span><br />
+        <span>Used </span> <input type="checkbox" data-bind="checked: used" />
+        <div data-bind="visible: used">
+            <span>Number only </span><input type="checkbox" data-bind="checked: isnumber" />
+            <span data-bind="visible:isnumber">Min value</span>
+            <input type="number" data-bind="visible:isnumber, value: nmin" />
+            <span data-bind="visible:isnumber">Max value</span>
+            <input type="number" data-bind="visible:isnumber, value: nmax" />
+            <span data-bind="visible:!isnumber()">Min length</span>
+            <input type="number" data-bind="visible:!isnumber(), value: min" />
+            <span data-bind="visible:!isnumber()">Max length</span>
+            <input type="number" data-bind="visible:!isnumber(), value: min" />
+            <span data-bind="visible: !isnumber()">Requried Words</span>
+            <div data-bind="foreach: {data: must, as: 'm'}, visible:!isnumber()">
+                <input type="text" data-bind="value: m" /><a class="btn btn-primary" role="button" data-bind="click: $parent.removemust($index())">remove</a>
+            </div>
+            <a class="btn btn-primary" href="#" role="button" data-bind="click: addmust, visible:!isnumber()">add</a>
+            <span data-bind="visible: !isnumber()">Banned Words</span>
+            <div data-bind="foreach: {data: mustnot, as: 'm'}, visible:!isnumber()">
+                <input type="text" data-bind="value: m" /><a class="btn btn-primary" role="button" data-bind="click: $parent.removebanned($index())">remove</a>
+            </div>
+            <a class="btn btn-primary" href="#" role="button" data-bind="click: addbanned, visible:!isnumber()">add</a>
+        </div>
+    </div>
 </div>

@@ -59,7 +59,11 @@ namespace new123.Models
         public bool isnumber { get; set; }
         public int nmin { get; set; }
         public int nmax { get; set; }
-        public string [] must { get; set; }
-        public string[] mustnot { get; set; }
+        public word [] must { get; set; }
+        public word [] mustnot { get; set; }
+    }
+    public class word
+    {
+        public string svalue { get; set; }
     }
 }

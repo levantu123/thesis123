@@ -66,12 +66,16 @@
             <input type="number" data-bind="visible:!isnumber(), value: min" />
             <span data-bind="visible:!isnumber()">Max length</span>
             <input type="number" data-bind="visible:!isnumber(), value: min" />
-            <div data-bind="foreach: {data: must, as: 'm'}, visible:!isnumber()">
-                <input type="text" data-bind="value: m"/>
+            <span data-bind="visible: !isnumber()">Requried Words</span>           
+            <div data-bind="foreach: must, visible:!isnumber()">
+                <input type="text" data-bind="value: svalue"/><a class="btn btn-primary" role="button" data-bind="click: $parent.removemust">remove</a>
             </div>
-            <div data-bind="foreach: {data: mustnot, as: 'm'}, visible:!isnumber()">
-                <input type="text" data-bind="value: m" />
+            <input type="button" value="add" data-bind="click: addmust, visible:!isnumber()"/>
+            <span data-bind="visible: !isnumber()">Banned Words</span>
+            <div data-bind="foreach: mustnot, visible:!isnumber()">
+                <input type="text" data-bind="value: svalue" /><a class="btn btn-primary" role="button" data-bind="click: $parent.removebanned">remove</a>
             </div>
+            <input type="button" value="add" data-bind="click: addbanned, visible:!isnumber()" />           
         </div>
     </div>
 </div>

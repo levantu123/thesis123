@@ -2,24 +2,24 @@
 <span data-bind="text: index"></span>
 <div >
     <div data-bind="foreach:pages"  class="tab-content">
-        <div class="question-block tab-pane fade in active" data-bind="if: ($index()==0), visible:($index()==0),  attr: {id: (($index()==0)?'page' + ($index()):'none')}">
-            <div data-bind="foreach: questions">
-                <div>
-                    <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
+     
+            <form data-toggle="validator" role="form" class="question-block tab-pane fade in active" data-bind="if: ($index()==0), visible:($index()==0),  attr: {id: (($index()==0)?'page' + ($index()):'none')}">
+                <div data-bind="foreach: questions">
+                    <div>
+                        <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
+                    </div>
                 </div>
-            </div>
-            <a data-toggle="tab" data-bind="if: ($index()< $parent.getlength()-1), attr: {href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())">Next Page</a>
-            <a data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: '#page'+($parent.getbackpage($index()))}">Back</a>
-        </div>
-        <div class="question-block tab-pane fade" data-bind="if: ($index()>0),visible: ($index()>0), attr: {id: (($index()>0)?'page' + ($index()):'none')}">
-            <div data-bind="foreach: questions">
-                <div>
-                    <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
+                <input type="submit" value="Next page" data-toggle="tab" data-bind="if: ($index()< $parent.getlength()-1), attr: {href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())">Next Page</input>
+                <a data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: '#page'+($parent.getbackpage($index()))}">Back</a>
+            </form>
+            <form data-toggle="validator" role="form"  class="question-block tab-pane fade" data-bind="if: ($index()>0),visible: ($index()>0), attr: {id: (($index()>0)?'page' + ($index()):'none')}">
+                <div data-bind="foreach: questions">
+                    <div>
+                        <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
+                    </div>
                 </div>
-            </div>
-            <a data-toggle="tab" data-bind="if: ($index()< $parent.getlength()-1), attr: {href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())">Next Page</a>
-            <a data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: (($parent.getbackpage($index())!=-1)? '#page'+($parent.getbackpage($index())) :'#page'+($index()-1))}">Back</a>
-        </div>
-        
+              <input type="submit" value="Next page" data-bind="if: ($index()< $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'submit'), href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())"/>
+                <a data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: (($parent.getbackpage($index())!=-1)? '#page'+($parent.getbackpage($index())) :'#page'+($index()-1))}">Back</a>
+            </form>     
     </div>
 </div>

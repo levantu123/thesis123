@@ -40,17 +40,51 @@ function ObjectKoQuestionForm(question) {
         qtype: ko.observable(question.qtype),
         title: ko.observable(question.title),
         choices: obsChoices(question.choices),
-        required: question.required,
+        isrequired: question.isrequired,
+        requiredcontent: question.requiredcontent,
         options: temp_options,
         answer: ko.observable(''),
-        selectedOptions: ko.observableArray([temp_options[0]]),
-        checkvalid: function ()
+        isvalid: function ()
         {
-            var valid = false;
-            if (fself.required)
-            {
-
+            var valid = true;
+            var text = fself.answer();
+            var re = new RegExp(fself.regular());
+            console.log(text);
+            if (!re.test(text))
+            {          
+                valid = false;
             }
+
+            return valid;
+        },
+        required: function ()
+        {
+            var req = (fself.isrequired && (fself.regular().length > 3));
+            return req;
+        },
+        selectedOptions: ko.observableArray([temp_options[0]]),
+        regular: function ()
+        {
+            // ^(?=.*Android)(?=.*Mobile)(?!.*hihi)(?!.*haha).*
+            var regex = "^";
+            fself.requiredcontent.must.forEach(function (w)
+            {
+                if (w.svalue.length !== 0)
+                {
+                    regex = regex + "(?=.*" + w.svalue + ")";
+                }              
+            });
+            fself.requiredcontent.mustnot.forEach(function (w)
+            {
+                if (w.svalue.length !== 0)
+                {
+                    regex = regex + "(?!.*" + w.svalue + ")";
+                }
+            });
+            regex = regex + ".*";
+            
+
+            return regex;
         },
         getscore: function()
         {
@@ -107,6 +141,15 @@ function ObjectKoPageForm(page) {
                 sc = q.getnextpage();
             });
             return sc;
+        },
+        isvalid: function ()
+        {
+            var valid = true;
+            pself.questions().forEach(function (q)
+            {
+                valid = (valid && q.isvalid());
+            });
+            return valid;
         }
     };
     return pself;
