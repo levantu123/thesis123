@@ -2,4 +2,11 @@
     <span>Question </span><span data-bind="text: $index"></span>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
-<textarea class="textarea" data-bind="value:answer" style="width:500px;height:150px;"></textarea>
+<div data-bind="ifnot: required()">
+    <textarea type="text" data-bind="ifnot: required(), value:answer, attr:{pattern: regular()}" style="width:500px;height:150px;"></textarea>
+</div>
+
+<div data-bind="if: required()">
+    <textarea type="text" required data-bind="ifnot: required(), value:answer, attr:{pattern: regular()}" style="width:500px;height:150px;"></textarea>
+</div>
+
