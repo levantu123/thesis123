@@ -29,3 +29,24 @@
 .edit-block input{
     display: block;
 }
+
+
+
+
+
+.tu-navbar {
+    background-color: none;
+    border-color: none;
+}
+
+.navbar-brand{
+    color: black;
+}
+
+.menu-link a{
+    color:black;
+}
+
+body{
+    background-image : url(/Pages/pictures/background.jpg)
+}
