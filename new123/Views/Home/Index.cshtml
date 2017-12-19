@@ -1,52 +1,69 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
-<div class="site-wrapper">
 
-    <div class="site-wrapper-inner">
+    @Styles.Render("~/Pages/src/css/cover.css")
+    <div class="site-wrapper">
 
-        <div class="cover-container">
-            <main role="main" class="inner cover">
-                <h1 class="cover-heading">Cover your page.</h1>
-                <p class="lead">Cover is a one-page template for building simple and beautiful home pages. Download, edit the text, and add your own fullscreen background photo to make it your own.</p>
-                <p class="lead">
-                    <a href="#" class="btn btn-lg btn-secondary">Learn more</a>
-                </p>
-            </main>
+        <div class="site-wrapper-inner">
 
-            <footer class="mastfoot">
-                <div class="inner">
-                    <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo"></a>.</p>
-                </div>
-            </footer>
+            <div class="cover-container">
+
+                
+                <main role="main" class="inner cover">
+                    <h1 class="cover-heading">Things come from information</h1>
+                    <p class="lead">Sur brings you the fastest way to create a survey</p>
+                    <p class="lead">
+                        <a href="#" class="btn btn-lg btn-secondary">Get Started</a>
+                    </p>
+                </main>
+
+                
+
+            </div>
 
         </div>
 
     </div>
+    <!-- START THE FEATURETTES -->
 
-</div>
-<div class="tu-header">
-    <h1>ASP.NET</h1>
-    <p class="lead">This is my lead</p>
-    <p><a href="#" class="btn btn-primary btn-lg">Get Started &raquo;</a></p>
-</div>
+    <hr class="featurette-divider">
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            This is my started
-        </p>
-        <p><a class="btn btn-default" href="#">Get Started &raquo;</a></p>
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        
+        <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
+        <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        </div>
+        <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+        </div>
     </div>
-</div>
+
+    <hr class="featurette-divider">
+
+    <!-- /END THE FEATURETTES -->

@@ -267,7 +267,9 @@
       <DependentUpon>SurveyDb.edmx</DependentUpon>
       <LastGenOutput>SurveyDb.cs</LastGenOutput>
     </Content>
-    <Content Include="Pages\pictures\background.jpg" />
+    <Content Include="Pages\view\templates\icon\remove_button.png" />
+    <Content Include="Pages\pictures\website-background.png" />
+    <Content Include="Pages\src\css\cover.css" />
     <Content Include="Pages\src\js\Chart.js" />
     <Content Include="Pages\view\Global.js" />
     <Content Include="Pages\view\index.html" />
@@ -388,6 +390,7 @@
     <Content Include="Views\Surveys\Form.cshtml" />
     <Content Include="Views\Surveys\View.cshtml" />
     <Content Include="Views\Surveys\Report.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -408,6 +411,7 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Pages\icon\" />
     <Folder Include="Pages\view\templates\report_aspect\" />
   </ItemGroup>
   <PropertyGroup>

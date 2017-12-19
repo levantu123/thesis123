@@ -1,9 +1,18 @@
 ﻿
-<span data-bind="text: sname"></span>
-<span data-bind="text: index"></span>
+<div class="survey-header-bar">
+    <span>Title: </span>
+    <span data-bind="text: sname"></span>
+    
+</div>
+
 <div class="page-block" data-bind="foreach: pages">
-    <span data-bind="text:$index"></span>
-    <input type="button" value="Remove" data-bind="click: $parent.removePage" />
+    <div>
+        <span>Page </span>
+        <span data-bind="text:($index()+1)"></span>
+    </div>
+    <div>
+        <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove_button.png" width="20" height="20" value="Remove" data-bind="click: $parent.removePage" />
+    </div>
     <div data-bind="sortable: questions" class="question-block">
         <div>
             <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/tmp_questions'}"></div>
