@@ -6,18 +6,25 @@
 </div>
 
 <div class="page-block" data-bind="foreach: pages">
-    <div>
-        <span>Page </span>
-        <span data-bind="text:($index()+1)"></span>
-    </div>
-    <div>
-        <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove_button.png" width="20" height="20" value="Remove" data-bind="click: $parent.removePage" />
-    </div>
-    <div data-bind="sortable: questions" class="question-block">
-        <div>
-            <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/tmp_questions'}"></div>
+    <div class="page-area">
+        <div class="page-bar">
+            <div class="page-title">
+                <span>Page </span>
+                <span data-bind="text:($index()+1)"></span>
+            </div>
+            <div class="page-button">
+                <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove_button.png" width="20" height="20" value="Remove" data-bind="click: $parent.removePage" />
+            </div>
+        </div>
+
+        <div data-bind="sortable: questions" class="question-block">
+            <div>
+                <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/tmp_questions'}"></div>
+            </div>
         </div>
     </div>
+    
 </div>
 <input type="button" value="Add page" data-bind="click: addPage" />
 
+ 

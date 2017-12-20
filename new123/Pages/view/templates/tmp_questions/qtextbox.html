@@ -2,7 +2,7 @@
     <span>Question </span><span data-bind="text: $index"></span>
     <div class="q-btns">
         <input type="checkbox" value="Edit" data-bind="checked: inedit" />
-        <input type="button" value="Remove" data-bind="click: $parent.removeQuestion" />
+        <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removeQuestion" />
     </div>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
@@ -10,40 +10,36 @@
 <input type="text" />
 <div class="edit" data-bind="visible: inedit">
     <div class="q-title-edit edit-block">
-        <span>Question</span>
-        <input data-bind="value: title" />
+        <b class="edit-label"><span>Question</span></b>
+        <input class="textbox-edit" data-bind="value: title" />
     </div>
     <div class="q-required-edit edit-block">
-        <span>Required </span>
+        <b class="edit-label"><span>Required </span></b>
         <input type="checkbox" data-bind="checked:isrequired" />
     </div>
     <div class="q-description-edit edit-block">
-        <div class="edit-block">
-            <span>Use Short Description</span>
-            <input type="checkbox" data-bind="checked: useshortdescription" />
-        </div>
+        
+            <b class="edit-label"><span>Use Short Description</span></b>
+            <input type="checkbox" data-bind="checked: useshortdescription" />   
         <div>
-            <span data-bind="visible: useshortdescription">Short Description</span>
-            <input data-bind="value: shortdescription, visible : useshortdescription" />
+            <b class="edit-label"><span data-bind="visible: useshortdescription">Short Description</span></b>            
+            <input class="textbox-edit" data-bind="value: shortdescription, visible : useshortdescription" />
         </div>
     </div>   
     <div class="q-score-edit edit-block">
-        <div class="edit-block">
-            <span>Score feature</span>
-            <input type="checkbox" data-bind="checked: isscored" />
-        </div>
+        <b class="edit-label"><span>Score feature</span></b>
+        <input type="checkbox" data-bind="checked: isscored" />    
     </div>
     <div class="q-detect-edit edit-block">
-        <div class="edit-block">
-            <span>Use to detect next page </span>
-            <input type="checkbox" data-bind="checked:nextpagedetect" />
-        </div>
+        <b class="edit-label"><span>Use to detect next page </span></b>       
+        <input type="checkbox" data-bind="checked:nextpagedetect" />       
     </div>
     <div class="q-options-edit edit-block" data-bind="visible: showoption">
-        <h5><span>Options</span></h5>
+        <b class="edit-label"><span>Options</span></b> 
+        
         <div data-bind="foreach: choices" class="q-choices-edit">
-            <div class="edit-block">
-                <span>Option </span><span data-bind="text: $index"></span>
+            <div>
+                <span>Option </span>
                 <input data-bind="value: choice_value" />
                 <span data-bind="visible:$parent.isscored">Score</span>
                 <input type="number" data-bind="value: score, visible:$parent.isscored" />
@@ -54,8 +50,8 @@
         <input type="button" value="Add More" data-bind="click:addchoice" />
     </div>
     <div class="q-required-content-edit edit-block" data-bind="with: requiredcontent">
-        <span>More options</span><br />
-        <span>Used </span> <input type="checkbox" data-bind="checked: used" />
+        <div class="moreoption-bar"><b class="edit-label"><span>More options</span></b></div>
+        <b class="edit-label"><span>Used</span></b>  <input type="checkbox" data-bind="checked: used" />
         <div data-bind="visible: used">
             <span>Number only </span><input type="checkbox" data-bind="checked: isnumber" />
             <span data-bind="visible:isnumber">Min value</span>

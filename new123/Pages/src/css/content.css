@@ -37,6 +37,57 @@
     float: right;
 }
 .edit-block input{
-    display: block;
+    display: inline-block;
 }
 
+.page-title{
+    display: inline-block;
+}
+.page-button{
+    float: right;
+    display: inline-block;
+}
+.page-area {
+    background-color: #337ab726;
+    padding-bottom: 5px;
+    padding-right: 2px
+}
+.page-bar {
+    background-color: white;
+    margin-top: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.edit {
+    padding-top: 20px;
+
+}
+.q-title-edit {
+    background-color: #f3ca8e3b;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+.edit-block {
+    background-color: #f3ca8e3b;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-bottom: 5px;
+    margin-top: 2px;
+}
+.edit-label{
+    width: 25%;
+    min-width: 30px;
+}
+.textbox-edit{
+    width: 70%;
+}
+.moreoption-bar{
+    padding: 3px;
+    background-color: purple;
+}
+.remove-button{
+    border-radius: 100%;
+}

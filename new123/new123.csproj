@@ -267,6 +267,7 @@
       <DependentUpon>SurveyDb.edmx</DependentUpon>
       <LastGenOutput>SurveyDb.cs</LastGenOutput>
     </Content>
+    <Content Include="Pages\view\templates\icon\remove-2-button.png" />
     <Content Include="Pages\view\templates\icon\remove_button.png" />
     <Content Include="Pages\pictures\website-background.png" />
     <Content Include="Pages\src\css\cover.css" />
