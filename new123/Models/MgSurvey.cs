@@ -42,6 +42,8 @@ namespace new123.Models
         public bool nextpagedetect { get; set; }
         public bool isscored { get; set; }
         public choice[] choices { get; set; }
+        public word[] row { get; set; }
+        public word[] column { get; set; }
         public requiredcontent requiredcontent { get; set; }
     }
     public class choice
@@ -56,7 +58,7 @@ namespace new123.Models
         public bool used { get; set; }
         public int min { get; set; }
         public int max { get; set; }
-        public bool isnumber { get; set; }
+        public string inputtype { get; set; }
         public int nmin { get; set; }
         public int nmax { get; set; }
         public word [] must { get; set; }

@@ -1,17 +1,35 @@
-<div class="question-mask">
+﻿<div class="question-mask">
     <span>Question </span><span data-bind="text: $index"></span>
     <div class="q-btns">
-        <input type="checkbox" value="Edit" data-bind="checked: inedit"/>
+        <input type="checkbox" value="Edit" data-bind="checked: inedit" />
         <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removeQuestion" />
     </div>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
 <div class="q-shortdescription"><h4 data-bind="text: shortdescription, visible: useshortdescription"></h4></div>
 
-<select data-bind="foreach: choices" class="q-choices">
-        <option data-bind="text: choice_value"></option>
-</select>
-<div class="edit" data-bind="visible: inedit">  
+<div class="columns-title row">
+    <div class="col-sm-2"></div>
+    <div data-bind="foreach: column">
+        <div class="col-sm-2">
+            <span data-bind="text: svalue"></span>
+        </div>
+    </div>
+</div>
+<div data-bind="foreach: row" class="q-rows">
+    <div class="q-columns row">
+        <div class="col-sm-2">
+            <span data-bind="text: svalue"></span>
+        </div>
+        <div data-bind="foreach: $parent.column">
+            <div class="col-sm-2">
+                <input type="radio" disabled="disabled" />
+            </div>
+        </div>
+    </div>
+    
+</div>
+<div class="edit" data-bind="visible: inedit">
     <div class="q-title-edit edit-block">
         <b class="edit-label"><span>Question</span></b>
         <input class="textbox-edit" data-bind="value: title" />
@@ -28,15 +46,32 @@
             <b class="edit-label"><span data-bind="visible: useshortdescription">Short Description</span></b>
             <input class="textbox-edit" data-bind="value: shortdescription, visible : useshortdescription" />
         </div>
-    </div>     
-    <div class="q-score-edit edit-block">
-        <b class="edit-label"><span>Score feature</span></b>
-        <input type="checkbox" data-bind="checked: isscored" />
     </div>
-    <div class="q-detect-edit edit-block">
-        <b class="edit-label"><span>Use to detect next page </span></b>
-        <input type="checkbox" data-bind="checked:nextpagedetect" />
+    
+    <div class="q-row-edit edit-block">
+        <b class="edit-label"><span>Rows </span></b>
+        <div data-bind="foreach: row">
+            <div>
+                <span>Row </span><span data-bind="text: $index"></span>
+                <input type="text" data-bind="value: svalue" />
+                <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removerow" />
+            </div>
+        </div>
+        <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addrow" />
     </div>
+
+    <div class="q-column-edit edit-block">
+        <b class="edit-label"><span>Columns </span></b>
+        <div data-bind="foreach: column">
+            <div>
+                <span>Column </span><span data-bind="text: $index"></span>
+                <input type="text" data-bind="value: svalue" />
+                <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removecolumn" />
+            </div>
+        </div>
+        <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addcolumn" />
+    </div>
+
     <div class="q-options-edit edit-block">
         <b class="edit-label"><span>Options</span></b>
 
@@ -51,7 +86,5 @@
             </div>
         </div>
         <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addchoice" />
-    </div>   
+    </div>
 </div>
-
-

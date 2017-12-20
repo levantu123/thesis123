@@ -1,5 +1,5 @@
 ﻿function newMultiple() {
-    return {
+    var pself = {
         qid: survey1.nextqid,
         btype: 'bmultiple',
         qtype: ko.observable('qmultiple'),
@@ -7,6 +7,77 @@
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
+        nextpagedetect: ko.observable(false),
+        isscored: ko.observable(false),
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        choices: ko.observableArray(obsChoices([
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0
+            }])),
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
+        inedit: ko.observable(false)
+    };
+    return pself;
+}
+
+
+function newMatrix1()
+{
+    var pself = {
+        qid: survey1.nextqid,
+        btype: 'bmatrix1',
+        qtype: ko.observable('qmatrix1'),
+        title: ko.observable('New Matrix'),
+        useshortdescription: ko.observable(false),
+        shortdescription: ko.observable(""),
+        isrequired: ko.observable(false),
+        row: ko.observableArray(obsrow([
+            { svalue: 'row1' }, { svalue: 'row2' }
+        ])),
+        column: ko.observableArray(obscolumn([
+            { svalue: 'column1' }, { svalue: 'column2' }, { svalue: 'column3'}
+        ])),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([
@@ -17,19 +88,112 @@
             }])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score : ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(0),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            console.log(pself.row());
+            console.log(this);
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false)
-    }
+    };
+    return pself;
 }
 
+
+function newMatrix2()
+{
+    var pself = {
+        qid: survey1.nextqid,
+        btype: 'bmatrix2',
+        qtype: ko.observable('qmatrix2'),
+        title: ko.observable('New Matrix'),
+        useshortdescription: ko.observable(false),
+        shortdescription: ko.observable(""),
+        isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
+        nextpagedetect: ko.observable(false),
+        isscored: ko.observable(false),
+        choices: ko.observableArray(obsChoices([
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0
+            }])),
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
+        inedit: ko.observable(false)
+    };
+    return pself;
+}
 
 function obsrequiredcontent(requiredcontent)
 {
@@ -41,7 +205,6 @@ function obsrequiredcontent(requiredcontent)
     {
         mustws.push({ svalue: ko.observable(mw.svalue) });
     });
-    console.log(ko.toJSON(mustws));
     ren.forEach(function (mnw)
     {
         mustnws.push({ value: ko.observable(mnw.svalue) });
@@ -50,7 +213,16 @@ function obsrequiredcontent(requiredcontent)
 
     var rself = {
         used: ko.observable(requiredcontent.used),
-        isnumber: ko.observable(requiredcontent.isnumber),
+        inputtype: ko.observable(requiredcontent.inputtype),
+        isnumber: function ()
+        {
+            var t = false;
+            if (rself.inputtype() === 'number')
+            {
+                t = true;
+            }
+            return t;
+        },
         min: ko.observable(requiredcontent.min),
         max: ko.observable(requiredcontent.max),
         nmin: ko.observable(requiredcontent.nmin),
@@ -71,7 +243,6 @@ function obsrequiredcontent(requiredcontent)
         },
         removemust: function ()
         {
-            console.log("neeed");
             rself.must.remove(this);
         }
     };
@@ -86,6 +257,8 @@ function newDropdown() {
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([
@@ -96,15 +269,42 @@ function newDropdown() {
             }])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(0),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
@@ -123,20 +323,49 @@ function newTextbox() {
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(100),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
@@ -154,20 +383,49 @@ function newPharagraph() {
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(10000),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
@@ -186,6 +444,8 @@ function newnMultiple() {
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([
@@ -196,15 +456,42 @@ function newnMultiple() {
             }])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(0),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
@@ -214,15 +501,22 @@ function newnMultiple() {
     return pself;
 }
 
-function newnDropdown() {
+function newnMatrix1()
+{
     var pself = {
         isdefault: true,
-        btype: 'bdropdown',
-        qtype: ko.observable('qdropdown'),
-        title: ko.observable('New Dropdown'),
+        btype: 'bmatrix1',
+        qtype: ko.observable('qmatrix1'),
+        title: ko.observable('New Matrix'),
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray(obsrow([
+            { svalue: 'row1' }, { svalue: 'row2' }
+        ])),
+        column: ko.observableArray(obscolumn([
+            { svalue: 'column1' }, { svalue: 'column2' }, { svalue: 'column3' }
+        ])),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([
@@ -233,15 +527,173 @@ function newnDropdown() {
             }])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(0),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
+}
+function newnMatrix2()
+{
+    var pself = {
+        isdefault: true,
+        btype: 'bmatrix2',
+        qtype: ko.observable('qmatrix2'),
+        title: ko.observable('New Matrix'),
+        useshortdescription: ko.observable(false),
+        shortdescription: ko.observable(""),
+        isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
+        nextpagedetect: ko.observable(false),
+        isscored: ko.observable(false),
+        choices: ko.observableArray(obsChoices([
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0
+            }])),
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
+}
+function newnDropdown() {
+    var pself = {
+        isdefault: true,
+        btype: 'bdropdown',
+        qtype: ko.observable('qdropdown'),
+        title: ko.observable('New Dropdown'),
+        useshortdescription: ko.observable(false),
+        shortdescription: ko.observable(""),
+        isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
+        nextpagedetect: ko.observable(false),
+        isscored: ko.observable(false),
+        choices: ko.observableArray(obsChoices([
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0
+            }])),
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
@@ -260,20 +712,49 @@ function newnTextbox() {
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(100),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
@@ -291,20 +772,49 @@ function newnPharagraph() {
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
-        requiredcontent: ko.observable({
-            used: ko.observable(false),
-            min: ko.observable(0),
-            max: ko.observable(1000),
-            must: ko.observableArray([]),
-            mustnot: ko.observableArray([])
-        }),
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
@@ -320,12 +830,14 @@ function Task(type) {
     if (type === 'bdropdown') return new newDropdown();
     if (type === 'btextbox') return new newTextbox();
     if (type === 'bparagraph') return new newPharagraph();
+    if (type === 'bmatrix1') return new newMatrix1();
 
 
     if (type === 'nbmultiple') return new newnMultiple();
     if (type === 'nbdropdown') return new newnDropdown();
     if (type === 'nbtextbox') return new newnTextbox();
     if (type === 'nbparagraph') return new newnPharagraph();
+    if (type === 'nbmatrix1') return new newnMatrix1();
 }
 
 function getSurveyDatajson() {
@@ -383,4 +895,26 @@ function obsChoices(choices)
         temp_choices.push(ko.observable(temp_choice));
     });
     return temp_choices;
+}
+function obsrow(row)
+{
+    var srow = [];
+    row.forEach(function (r)
+    {
+        srow.push(ko.observable({
+            svalue: ko.observable(r.svalue)
+        }));
+    });
+    return srow;
+}
+function obscolumn(col)
+{
+    var scol = [];
+    col.forEach(function (r)
+    {
+        scol.push(ko.observable({
+            svalue: ko.observable(r.svalue)
+        }));
+    });
+    return scol;
 }

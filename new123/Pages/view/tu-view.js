@@ -23,6 +23,21 @@ function updateSurveyData() {
 
 function ObjectKoQuestion(question)
 {
+    var row = [];
+    var column = [];
+    console.log(question);
+    question.row.forEach(function (r)
+    {
+        row.push({
+            svalue: ko.observable(r.svalue)
+        });
+    });
+    question.column.forEach(function (c)
+    {
+        column.push({
+            svalue: ko.observable(c.svalue)
+        });
+    });
     var pself = {
         qid: question.qid,
         btype: question.btype,
@@ -33,17 +48,45 @@ function ObjectKoQuestion(question)
         isrequired: ko.observable(question.isrequired),
         nextpagedetect: ko.observable(question.nextpagedetect),
         isscored: ko.observable(question.isscored),
-        choices: ko.observableArray(obsChoices(question.choices)),
-        
+        row: ko.observableArray(row),
+        column: ko.observableArray(column),
+        choices: ko.observableArray(obsChoices(question.choices)),      
         requiredcontent: ko.observable(obsrequiredcontent(question.requiredcontent)),
         inedit: ko.observable(false),
         showoption: ko.pureComputed(function ()
         {
             return (pself.isscored() || pself.nextpagedetect());
         }),
-        addchoice: function () {
-            this.choices.push(ko.observable({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) }));
-        }     
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        }
+        
     }
     return pself;
 }

@@ -267,6 +267,7 @@
       <DependentUpon>SurveyDb.edmx</DependentUpon>
       <LastGenOutput>SurveyDb.cs</LastGenOutput>
     </Content>
+    <Content Include="Pages\view\templates\icon\add-button.png" />
     <Content Include="Pages\view\templates\icon\remove-2-button.png" />
     <Content Include="Pages\view\templates\icon\remove_button.png" />
     <Content Include="Pages\pictures\website-background.png" />
@@ -289,12 +290,14 @@
     <Content Include="Pages\view\templates\preview_questions\qparagraph.html" />
     <Content Include="Pages\view\templates\Report.html" />
     <Content Include="Pages\view\templates\tmp_btns\bdropdown.html" />
+    <Content Include="Pages\view\templates\tmp_btns\bmatrix1.html" />
     <Content Include="Pages\view\templates\tmp_btns\bmultiple.html" />
     <Content Include="Pages\view\templates\tmp_btns\bpassword.html" />
     <Content Include="Pages\view\templates\tmp_btns\bparagraph.html" />
     <Content Include="Pages\view\templates\tmp_btns\brank.html" />
     <Content Include="Pages\view\templates\tmp_btns\btextbox.html" />
     <Content Include="Pages\view\templates\tmp_questions\qdropdown.html" />
+    <Content Include="Pages\view\templates\tmp_questions\qmatrix1.html" />
     <Content Include="Pages\view\templates\tmp_questions\qmultiple.html" />
     <Content Include="Pages\view\templates\tmp_questions\qparagraph.html" />
     <Content Include="Pages\view\templates\tmp_questions\qtextbox.html" />

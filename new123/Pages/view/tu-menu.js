@@ -38,7 +38,7 @@ function btns() {
             new element({ type: 'nbdropdown' }),
             new element({ type: 'nbtextbox' }),
             new element({ type: 'nbparagraph' }),
-            new element({ type: 'nbmultiple' })
+            new element({ type: 'nbmatrix1' })
         ],
 
     };

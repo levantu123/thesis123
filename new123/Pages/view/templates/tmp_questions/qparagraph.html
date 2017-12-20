@@ -10,72 +10,88 @@
 <textarea class="textarea" style="width:500px;height:150px;"></textarea>
 <div class="edit" data-bind="visible: inedit">
     <div class="q-title-edit edit-block">
-        <span>Question</span>
-        <input data-bind="value: title" />
+        <b class="edit-label"><span>Question</span></b>
+        <input class="textbox-edit" data-bind="value: title" />
     </div>
     <div class="q-required-edit edit-block">
-        <span>Required </span>
+        <b class="edit-label"><span>Required </span></b>
         <input type="checkbox" data-bind="checked:isrequired" />
     </div>
     <div class="q-description-edit edit-block">
-        <div class="edit-block">
-            <span>Use Short Description</span>
-            <input type="checkbox" data-bind="checked: useshortdescription" />
-        </div>
+
+        <b class="edit-label"><span>Use Short Description</span></b>
+        <input type="checkbox" data-bind="checked: useshortdescription" />
         <div>
-            <span data-bind="visible: useshortdescription">Short Description</span>
-            <input data-bind="value: shortdescription, visible : useshortdescription" />
+            <b class="edit-label"><span data-bind="visible: useshortdescription">Short Description</span></b>
+            <input class="textbox-edit" data-bind="value: shortdescription, visible : useshortdescription" />
         </div>
     </div>
     <div class="q-score-edit edit-block">
-        <div class="edit-block">
-            <span>Score feature</span>
-            <input type="checkbox" data-bind="checked: isscored" />
-        </div>
+        <b class="edit-label"><span>Score feature</span></b>
+        <input type="checkbox" data-bind="checked: isscored" />
     </div>
     <div class="q-detect-edit edit-block">
-        <div class="edit-block">
-            <span>Use to detect next page </span>
-            <input type="checkbox" data-bind="checked:nextpagedetect" />
-        </div>
+        <b class="edit-label"><span>Use to detect next page </span></b>
+        <input type="checkbox" data-bind="checked:nextpagedetect" />
     </div>
     <div class="q-options-edit edit-block" data-bind="visible: showoption">
-        <h5><span>Options</span></h5>
+        <b class="edit-label"><span>Options</span></b>
+
         <div data-bind="foreach: choices" class="q-choices-edit">
-            <div class="edit-block">
-                <span>Option </span><span data-bind="text: $index"></span>
+            <div>
+                <span>Option </span>
                 <input data-bind="value: choice_value" />
                 <span data-bind="visible:$parent.isscored">Score</span>
-                <input type="number" data-bind="value: score, visible:$parent.isscored" />
+                <input class="number-edit" type="number" data-bind="value: score, visible:$parent.isscored" />
                 <span data-bind="visible:$parent.nextpagedetect">Next page</span>
-                <input type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+                <input class="number-edit" type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
             </div>
         </div>
-        <input type="button" value="Add More" data-bind="click:addchoice" />
+        <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addchoice" />
     </div>
     <div class="q-required-content-edit edit-block" data-bind="with: requiredcontent">
-        <span>More options</span><br />
-        <span>Used </span> <input type="checkbox" data-bind="checked: used" />
+        <div class="moreoption-bar"><b class="edit-label"><span>More options</span></b></div>
+        <b class="edit-label"><span>Used</span></b>  <input type="checkbox" data-bind="checked: used" />
         <div data-bind="visible: used">
-            <span>Number only </span><input type="checkbox" data-bind="checked: isnumber" />
-            <span data-bind="visible:isnumber">Min value</span>
-            <input type="number" data-bind="visible:isnumber, value: nmin" />
-            <span data-bind="visible:isnumber">Max value</span>
-            <input type="number" data-bind="visible:isnumber, value: nmax" />
-            <span data-bind="visible:!isnumber()">Min length</span>
-            <input type="number" data-bind="visible:!isnumber(), value: min" />
-            <span data-bind="visible:!isnumber()">Max length</span>
-            <input type="number" data-bind="visible:!isnumber(), value: min" />
-            <span data-bind="visible: !isnumber()">Requried Words</span>
-            <div data-bind="foreach: {data: must, as: 'm'}, visible:!isnumber()">
-                <input type="text" data-bind="value: m" /><a class="btn btn-primary" role="button" data-bind="click: $parent.removemust($index())">remove</a>
+            <b class="edit-label">
+                <span>Input type</span>
+            </b>
+            <select data-bind="value: inputtype">
+                <option data-bind="text: 'text'">text</option>
+                <option data-bind="text: 'number'">number</option>
+                <option data-bind="text: 'regular expresion'">regular expresion</option>
+            </select>
+
+            <b class="edit-label"><span data-bind="visible:isnumber()">Min value</span></b>
+            <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmin" />
+            <b class="edit-label"><span data-bind="visible:isnumber()">Max value</span></b>
+            <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmax" />
+            <b class="edit-label"><span data-bind="visible:!isnumber()">Min length</span></b>
+
+
+
+            <input class="number-edit" type="number" data-bind="visible:!isnumber(), value: min" />
+            <b class="edit-label"><span data-bind="visible:!isnumber()">Max length</span></b>
+            <input class="number-edit" type="number" data-bind="visible:!isnumber(), value: min" />
+
+            <div>
+                <b class="edit-label"><span data-bind="visible: !isnumber()">Requried Words</span></b>
+                <div data-bind="foreach: must, visible:!isnumber()">
+                    <div>
+                        <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removemust" />
+                    </div>
+                </div>
+                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addmust, visible:!isnumber()" />
             </div>
-            <a class="btn btn-primary" href="#" role="button" data-bind="click: addmust, visible:!isnumber()">add</a>
-            <span data-bind="visible: !isnumber()">Banned Words</span>
-            <div data-bind="foreach: {data: mustnot, as: 'm'}, visible:!isnumber()">
-                <input type="text" data-bind="value: m" /><a class="btn btn-primary" role="button" data-bind="click: $parent.removebanned($index())">remove</a>
+            <div>
+                <span data-bind="visible: !isnumber()">Banned Words</span>
+                <div data-bind="foreach: mustnot, visible:!isnumber()">
+                    <div>
+                        <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removebanned" />
+                    </div>
+                </div>
+                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addbanned, visible:!isnumber()" />
             </div>
-            <a class="btn btn-primary" href="#" role="button" data-bind="click: addbanned, visible:!isnumber()">add</a>
         </div>
     </div>
 </div>
