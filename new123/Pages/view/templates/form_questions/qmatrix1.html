@@ -1,0 +1,24 @@
+﻿<div class="question-mask">
+    <span>Question </span><span data-bind="text: $index"></span>
+</div>
+<div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
+<div class="columns-title row">
+    <div class="col-sm-2"></div>
+    <div data-bind="foreach: column">
+        <div class="col-sm-2">
+            <span data-bind="text: svalue"></span>
+        </div>
+    </div>
+</div>
+<div data-bind="foreach: row" class="q-rows">
+    <div class="q-columns row">
+        <div class="col-sm-2">
+            <span data-bind="text: svalue"></span>
+        </div>
+        <div data-bind="foreach: $parent.column">
+            <div class="col-sm-2">
+                <input type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer"  />
+            </div>
+        </div>
+    </div>
+</div>

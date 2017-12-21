@@ -268,6 +268,8 @@
       <LastGenOutput>SurveyDb.cs</LastGenOutput>
     </Content>
     <Content Include="Pages\view\templates\form_questions\qcheckbox.html" />
+    <Content Include="Pages\view\templates\form_questions\qmatrix1.html" />
+    <Content Include="Pages\view\templates\form_questions\qmatrix2.html" />
     <Content Include="Pages\view\templates\icon\add-button.png" />
     <Content Include="Pages\view\templates\icon\remove-2-button.png" />
     <Content Include="Pages\view\templates\icon\remove_button.png" />

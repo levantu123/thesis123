@@ -34,6 +34,21 @@ function ObjectKoQuestionForm(question) {
     question.choices.forEach(function (choice) {
         temp_options.push(choice.choice_value);
     });
+    var row = [];
+    var column = [];
+    console.log(question);
+    question.row.forEach(function (r)
+    {
+        row.push({
+            svalue: ko.observable(r.svalue)
+        });
+    });
+    question.column.forEach(function (c)
+    {
+        column.push({
+            svalue: ko.observable(c.svalue)
+        });
+    });
     var fself = {
         qid: question.qid,
         btype: question.btype,
@@ -41,6 +56,8 @@ function ObjectKoQuestionForm(question) {
         title: ko.observable(question.title),
         choices: obsChoices(question.choices),
         isrequired: question.isrequired,
+        row: ko.observableArray(row),
+        column: ko.observableArray(column),
         requiredcontent: question.requiredcontent,
         options: temp_options,
         answer: ko.observable(''),

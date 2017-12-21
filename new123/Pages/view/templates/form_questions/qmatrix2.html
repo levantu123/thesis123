@@ -4,7 +4,7 @@
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
 <div data-bind="foreach: choices" class="q-choices">
     <div class="q-choice">
-        <input type="checkbox" data-bind="value: choice_value, checked: $parent.selectedOptions" />
+        <input type="radio" data-bind="value: choice_value, checked: $parent.answer" />
         <span data-bind="text: choice_value"></span>
     </div>
 </div>
