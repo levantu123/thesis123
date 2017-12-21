@@ -17,7 +17,7 @@
             </div>
         </div>
 
-        <div data-bind="sortable: questions" class="question-block">
+        <div data-bind="sortable: {data: questions, as: 'question'} " class="question-block">
             <div>
                 <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/tmp_questions'}"></div>
             </div>

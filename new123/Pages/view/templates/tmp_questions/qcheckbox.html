@@ -1,0 +1,57 @@
+﻿<div class="question-mask">
+    <span>Question </span><span data-bind="text: $index"></span>
+    <div class="q-btns">
+        <input type="checkbox" value="Edit" data-bind="checked: inedit" />
+        <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removeQuestion" />
+    </div>
+</div>
+<div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
+<div class="q-shortdescription"><h4 data-bind="text: shortdescription, visible: useshortdescription"></h4></div>
+<div data-bind="foreach: choices" class="q-choices">
+    <div class="q-choice">
+        <input type="radio" disabled="disabled" />
+        <span data-bind="text: choice_value"></span>
+    </div>
+</div>
+<div class="edit" data-bind="visible: inedit">
+    <div class="q-title-edit edit-block">
+        <b class="edit-label"><span>Question</span></b>
+        <input class="textbox-edit" data-bind="value: title" />
+    </div>
+    <div class="q-required-edit edit-block">
+        <b class="edit-label"><span>Required </span></b>
+        <input type="checkbox" data-bind="checked:isrequired" />
+    </div>
+    <div class="q-description-edit edit-block">
+
+        <b class="edit-label"><span>Use Short Description</span></b>
+        <input type="checkbox" data-bind="checked: useshortdescription" />
+        <div>
+            <b class="edit-label"><span data-bind="visible: useshortdescription">Short Description</span></b>
+            <input class="textbox-edit" data-bind="value: shortdescription, visible : useshortdescription" />
+        </div>
+    </div>
+    <div class="q-score-edit edit-block">
+        <b class="edit-label"><span>Score feature</span></b>
+        <input type="checkbox" data-bind="checked: isscored" />
+    </div>
+    <div class="q-detect-edit edit-block">
+        <b class="edit-label"><span>Use to detect next page </span></b>
+        <input type="checkbox" data-bind="checked:nextpagedetect" />
+    </div>
+    <div class="q-options-edit edit-block">
+        <b class="edit-label"><span>Options</span></b>
+
+        <div data-bind="foreach: choices" class="q-choices-edit">
+            <div>
+                <span>Option </span>
+                <input data-bind="value: choice_value" />
+                <span data-bind="visible:$parent.isscored">Score</span>
+                <input class="number-edit" type="number" data-bind="value: score, visible:$parent.isscored" />
+                <span data-bind="visible:$parent.nextpagedetect">Next page</span>
+                <input class="number-edit" type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+            </div>
+        </div>
+        <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addchoice" />
+    </div>
+</div>

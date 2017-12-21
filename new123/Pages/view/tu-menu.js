@@ -35,10 +35,12 @@ function btns() {
     return {
         menu_btns_list: [
             new element({ type: 'nbmultiple' }),
+            new element({ type: 'nbcheckbox' }),
             new element({ type: 'nbdropdown' }),
             new element({ type: 'nbtextbox' }),
             new element({ type: 'nbparagraph' }),
-            new element({ type: 'nbmatrix1' })
+            new element({ type: 'nbmatrix1' }),
+            new element({ type: 'nbmatrix2' })
         ],
 
     };

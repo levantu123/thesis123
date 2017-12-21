@@ -62,6 +62,70 @@
 }
 
 
+function newCheckbox()
+{
+    var pself = {
+        qid: survey1.nextqid,
+        btype: 'bcheckbox',
+        qtype: ko.observable('qcheckbox'),
+        title: ko.observable('New Check Box'),
+        useshortdescription: ko.observable(false),
+        shortdescription: ko.observable(""),
+        isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
+        nextpagedetect: ko.observable(false),
+        isscored: ko.observable(false),
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        choices: ko.observableArray(obsChoices([
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0
+            }])),
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
+        inedit: ko.observable(false)
+    };
+    return pself;
+}
+
 function newMatrix1()
 {
     var pself = {
@@ -132,6 +196,76 @@ function newMatrix1()
 }
 
 
+function newMatrix3()
+{
+    var pself = {
+        qid: survey1.nextqid,
+        btype: 'bmatrix3',
+        qtype: ko.observable('qmatrix3'),
+        title: ko.observable('New Matrix'),
+        useshortdescription: ko.observable(false),
+        shortdescription: ko.observable(""),
+        isrequired: ko.observable(false),
+        row: ko.observableArray(obsrow([
+            { svalue: 'row1' }, { svalue: 'row2' }
+        ])),
+        column: ko.observableArray(obscolumn([
+            { svalue: 'column1' }, { svalue: 'column2' }, { svalue: 'column3' }
+        ])),
+        nextpagedetect: ko.observable(false),
+        isscored: ko.observable(false),
+        choices: ko.observableArray(obsChoices([
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0
+            }])),
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            console.log(pself.row());
+            console.log(this);
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
+        inedit: ko.observable(false)
+    };
+    return pself;
+}
+
+
 function newMatrix2()
 {
     var pself = {
@@ -142,8 +276,12 @@ function newMatrix2()
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
-        row: ko.observableArray([]),
-        column: ko.observableArray([]),
+        row: ko.observableArray(obsrow([
+            { svalue: 'row1' }, { svalue: 'row2' }
+        ])),
+        column: ko.observableArray(obscolumn([
+            { svalue: 'column1' }, { svalue: 'column2' }, { svalue: 'column3' }
+        ])),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([
@@ -501,6 +639,74 @@ function newnMultiple() {
     return pself;
 }
 
+
+function newnCheckbox()
+{
+    var pself = {
+        isdefault: true,
+        btype: 'bcheckbox',
+        qtype: ko.observable('qcheckbox'),
+        title: ko.observable('New Check box'),
+        useshortdescription: ko.observable(false),
+        shortdescription: ko.observable(""),
+        isrequired: ko.observable(false),
+        row: ko.observableArray([]),
+        column: ko.observableArray([]),
+        nextpagedetect: ko.observable(false),
+        isscored: ko.observable(false),
+        choices: ko.observableArray(obsChoices([
+            {
+                choice_value: 'Option 1',
+                nextpage: -1,
+                score: 0
+            }])),
+        addchoice: function ()
+        {
+            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+        },
+        addrow: function ()
+        {
+            this.row.push({
+                svalue: ko.observable("New row")
+            });
+        },
+        addcolumn: function ()
+        {
+            this.column.push({
+                svalue: ko.observable("New column")
+            });
+        },
+        removechoice: function ()
+        {
+            pself.choices.remove(this);
+        },
+        removerow: function ()
+        {
+            pself.row.remove(this);
+        },
+        removecolumn: function ()
+        {
+            pself.column.remove(this);
+        },
+        requiredcontent: ko.observable(obsrequiredcontent({
+            inputtype: "text",
+            used: false,
+            min: 0,
+            max: 100,
+            nmin: 0,
+            nmax: 100,
+            must: [],
+            mustnot: []
+        })),
+        inedit: ko.observable(false),
+        showoption: ko.pureComputed(function ()
+        {
+            return (pself.isscored() || pself.nextpagedetect());
+        })
+    };
+    return pself;
+}
+
 function newnMatrix1()
 {
     var pself = {
@@ -581,8 +787,12 @@ function newnMatrix2()
         useshortdescription: ko.observable(false),
         shortdescription: ko.observable(""),
         isrequired: ko.observable(false),
-        row: ko.observableArray([]),
-        column: ko.observableArray([]),
+        row: ko.observableArray(obsrow([
+            { svalue: 'row1' }, { svalue: 'row2' }
+        ])),
+        column: ko.observableArray(obscolumn([
+            { svalue: 'column1' }, { svalue: 'column2' }, { svalue: 'column3' }
+        ])),
         nextpagedetect: ko.observable(false),
         isscored: ko.observable(false),
         choices: ko.observableArray(obsChoices([
@@ -827,17 +1037,22 @@ function newnPharagraph() {
 
 function Task(type) {
     if (type === 'bmultiple') return new newMultiple();
+    if (type === 'bcheckbox') return new newCheckbox();
     if (type === 'bdropdown') return new newDropdown();
     if (type === 'btextbox') return new newTextbox();
     if (type === 'bparagraph') return new newPharagraph();
     if (type === 'bmatrix1') return new newMatrix1();
+    if (type === 'bmatrix2') return new newMatrix2();
 
 
     if (type === 'nbmultiple') return new newnMultiple();
+    if (type === 'nbcheckbox') return new newnCheckbox();
     if (type === 'nbdropdown') return new newnDropdown();
     if (type === 'nbtextbox') return new newnTextbox();
     if (type === 'nbparagraph') return new newnPharagraph();
     if (type === 'nbmatrix1') return new newnMatrix1();
+    if (type === 'nbmatrix2') return new newnMatrix2();
+
 }
 
 function getSurveyDatajson() {
