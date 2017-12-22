@@ -49,6 +49,22 @@ function ObjectKoQuestionForm(question) {
             svalue: ko.observable(c.svalue)
         });
     });
+    var selectedmatrixrow = [];
+    question.row.forEach(function (r)
+    {
+        var c = [];
+        question.column.forEach(function (co)
+        {
+            c.push({
+                svalue: co.svalue,
+                selectedOptions: ko.observableArray([temp_options[0]])
+            });
+        });
+        selectedmatrixrow.push({
+            svalue: r.svalue,
+            selectedmatrixcolumn: c
+        });
+    });
     var fself = {
         qid: question.qid,
         btype: question.btype,
@@ -80,6 +96,7 @@ function ObjectKoQuestionForm(question) {
             return req;
         },
         selectedOptions: ko.observableArray([temp_options[0]]),
+        selectedMatrixrow: selectedmatrixrow,
         regular: function ()
         {
             // ^(?=.*Android)(?=.*Mobile)(?!.*hihi)(?!.*haha).*
@@ -267,6 +284,32 @@ function getCurrentSolutionObject(data) {
             if (question.btype === 'bparagraph')
             {
                 text = question.answer;
+            }
+            if (question.btype === 'bcheckbox')
+            {
+                question.selectedOptions.forEach(function (t)
+                {
+                    text = text+ '['+t+'], '
+                });
+                text = text.slice(0, -2);
+            }
+            if (question.btype === 'bmatrix1')
+            {
+                text = question.answer;
+            }
+            if (question.btype === 'bmatrix2')
+            {
+                text = '';
+                
+                question.selectedMatrixrow.forEach(function (r)
+                {
+                    r.selectedmatrixcolumn.forEach(function (c)
+                    {
+                        text = text + '[' + r.svalue + ', ' + c.svalue + '] = [' + c.selectedOptions[0] + '], ';
+                    });
+                });
+                
+                text = text.slice(0, -2);
             }
             answers.push(
                 {

@@ -2,9 +2,23 @@
     <span>Question </span><span data-bind="text: $index"></span>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
-<div data-bind="foreach: choices" class="q-choices">
-    <div class="q-choice">
-        <input type="radio" data-bind="value: choice_value, checked: $parent.answer" />
-        <span data-bind="text: choice_value"></span>
+<div class="columns-title row">
+    <div class="col-sm-2"></div>
+    <div data-bind="foreach: column">
+        <div class="col-sm-2">
+            <span data-bind="text: svalue"></span>
+        </div>
+    </div>
+</div>
+<div data-bind="foreach: selectedMatrixrow" class="q-rows">
+    <div class="q-columns row">
+        <div class="col-sm-2">
+            <span data-bind="text: svalue"></span>
+        </div>
+        <div data-bind="foreach: selectedmatrixcolumn">
+            <div class="col-sm-2">
+                <select data-bind="options: question.options, selectedOptions: selectedOptions" class="q-choices"></select>
+            </div>
+        </div>
     </div>
 </div>
