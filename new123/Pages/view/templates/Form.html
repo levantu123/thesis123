@@ -17,8 +17,7 @@
                         <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/form_questions'}"></div>
                     </div>
                 </div>
-                <input type="submit" value="Next page" data-toggle="tab" data-bind="if: ($index()< $parent.getlength()-1), attr: {href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())">Next Page</input>
-                <a data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: '#page'+($parent.getbackpage($index()))}">Back</a>
+                <input type="submit" value="Next page" data-toggle="tab" data-bind="if: ($index()< $parent.getlength()-1), attr: {href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())"/>
             </form>
 
             <form data-toggle="validator" role="form"  class="question-block tab-pane fade page-area" data-bind="if: ($index()>0),visible: ($index()>0), attr: {id: (($index()>0)?'page' + ($index()):'none')}">

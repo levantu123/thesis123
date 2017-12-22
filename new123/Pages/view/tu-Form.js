@@ -77,6 +77,7 @@ function ObjectKoQuestionForm(question) {
         requiredcontent: question.requiredcontent,
         options: temp_options,
         answer: ko.observable(''),
+        nextpagedetect: question.nextpagedetect,
         isvalid: function ()
         {
             var valid = true;
@@ -155,6 +156,10 @@ function ObjectKoQuestionForm(question) {
                 }
                 
             });
+            if (!fself.nextpagedetect)
+            {
+                sc = -1;
+            }
             return sc;
         }
     };
@@ -172,7 +177,11 @@ function ObjectKoPageForm(page) {
             var sc = -1;
             pself.questions().forEach(function (q)
             {
-                sc = q.getnextpage();
+                if (q.getnextpage() !== -1)
+                {
+                    sc = q.getnextpage();
+                }
+                
             });
             return sc;
         },
