@@ -10,63 +10,60 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Index</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Pages/src/css/w3.css")
+    @Styles.Render("~/Pages/src/css/list.css")
 </head>
 <body>
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.SurveyName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SupplierID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CategoryID)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.NumberOfQuestion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SurveyJson)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Discontinued)
-            </th>
-            <th></th>
-        </tr>
-    
-    @foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.SurveyName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SupplierID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CategoryID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NumberOfQuestion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SurveyJson)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Discontinued)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id=item.SurveyID }) |
-                @Html.ActionLink("jEdit", "jEdit", new { id = item.SurveyID }) |
-                @Html.ActionLink("Details", "Details", new { id=item.SurveyID }) |
-                @Html.ActionLink("Delete", "Delete", new { id=item.SurveyID })
-            </td>
-        </tr>
-    }
-    
-    </table>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SUR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-link">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("About", "About", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("Surveys", "Index", "Surveys")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="list">
+        
+        <button class="w3-button w3-teal">@Html.ActionLink("Create New", "Create")</button>
+        <ul style="margin-top:2rem" class="w3-ul w3-card-4">
+
+            @foreach (var item in Model)
+            {
+                <li class="w3-bar">
+                    <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right none-underline-link">@Html.ActionLink("X", "Delete", new { id = item.SurveyID })</span>
+                    <span class="w3-large none-underline-link">@Html.ActionLink(item.SurveyName, "jEdit", new { id = item.SurveyID })</span><br>
+                    <span class="none-underline-link">@Html.ActionLink("Details", "Details", new { id = item.SurveyID }) | </span>
+                    @if (item.Discontinued)
+                    {
+                        <span class="none-underline-link">@Html.ActionLink("Unpublished", "pushlish", new { id = item.SurveyID })</span>
+                    }
+                    @if(!item.Discontinued)
+                    { 
+                    <span class="none-underline-link">@Html.ActionLink("Published", "pushlish", new { id = item.SurveyID })</span>
+
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+    <hr />
+    <footer>
+        <p>@DateTime.Now.Year - Do not stay behind</p>
+    </footer>
 </body>
 </html>

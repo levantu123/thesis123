@@ -93,5 +93,12 @@
     border-radius: 100%;
 }
 .number-edit{
-    width: 35px;
+    width: 100px;
+}
+.opttion-row{
+    padding-top: 5px;
+}
+.tab-button{
+    display: inline-block;
+    padding-left: 20px;
 }

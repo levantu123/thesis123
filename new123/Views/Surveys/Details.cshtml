@@ -31,43 +31,18 @@
             <dd>
                 @Html.DisplayFor(model => model.SupplierID)
             </dd>
-    
+              
             <dt>
-                @Html.DisplayNameFor(model => model.CategoryID)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.CategoryID)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.NumberOfQuestion)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.NumberOfQuestion)
-            </dd>
-    
-            <dt>
-                @Html.DisplayNameFor(model => model.SurveyJson)
+                <span>Description</span>
             </dt>
     
             <dd>
                 @Html.DisplayFor(model => model.SurveyJson)
             </dd>
     
-            <dt>
-                @Html.DisplayNameFor(model => model.Discontinued)
-            </dt>
-    
-            <dd>
-                @Html.DisplayFor(model => model.Discontinued)
-            </dd>
-    
         </dl>
     </div>
     <p>
-        @Html.ActionLink("Edit", "Edit", new { id = Model.SurveyID }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>

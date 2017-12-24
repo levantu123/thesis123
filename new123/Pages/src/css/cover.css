@@ -68,8 +68,9 @@ body {
 .site-wrapper{
     background-image: url(/Pages/pictures/website-background.png);
     padding-top: 20rem;
-    padding-bottom: 20rem;
+    padding-bottom: 25rem;
     padding-left: 10rem;
+    margin-bottom: 10rem;
 }
 
 @media (min-width: 768px) {
@@ -79,4 +80,7 @@ body {
     .order-md-1 {
         order: 1;
     }
+}
+.featurette{
+    padding-left: 30px;
 }

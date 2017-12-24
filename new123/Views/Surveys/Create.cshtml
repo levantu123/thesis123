@@ -33,39 +33,17 @@
                     @Html.ValidationMessageFor(model => model.SurveyName, "", new { @class = "text-danger" })
                 </div>
             </div>
-            <div class="form-group">
-                @Html.LabelFor(model => model.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CategoryID, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            
     
             <div class="form-group">
-                @Html.LabelFor(model => model.NumberOfQuestion, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.NumberOfQuestion, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.NumberOfQuestion, "", new { @class = "text-danger" })
-                </div>
-            </div>
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.SurveyJson, htmlAttributes: new { @class = "control-label col-md-2" })
+                <span class = "control-label col-md-2">Description</span>
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.SurveyJson, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.SurveyJson, "", new { @class = "text-danger" })
                 </div>
             </div>
     
-            <div class="form-group">
-                @Html.LabelFor(model => model.Discontinued, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.Discontinued)
-                        @Html.ValidationMessageFor(model => model.Discontinued, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
+            
     
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">

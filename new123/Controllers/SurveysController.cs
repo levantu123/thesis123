@@ -21,7 +21,15 @@ namespace new123.Controllers
         // GET: Surveys
         public async Task<ActionResult> Index()
         {
-            return View(await db.Surveys.ToListAsync());
+              
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByName(System.Web.HttpContext.Current.User.Identity.GetUserName());
+
+            if (user == null)
+            {
+                return RedirectToAction("login", "Account");
+            }
+            
+            return View(await db.Surveys.Where(i=>i.SupplierID.Equals(user.Id)).ToListAsync());
         }
 
         // GET: Surveys/Details/5
@@ -50,12 +58,15 @@ namespace new123.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "SurveyName,CategoryID,NumberOfQuestion,SurveyJson,Discontinued")] Survey survey)
+        public async Task<ActionResult> Create([Bind(Include = "SurveyName,SurveyJson")] Survey survey)
         {
             if (ModelState.IsValid)
             {
                 ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByName(System.Web.HttpContext.Current.User.Identity.GetUserName());
                 survey.SupplierID = user.Id;
+                survey.CategoryID = 0;
+                survey.NumberOfQuestion = 0;
+                survey.Discontinued = false;
                 db.Surveys.Add(survey);
                 await db.SaveChangesAsync();
                 survey.createMG();
@@ -94,6 +105,32 @@ namespace new123.Controllers
             }
             return View(survey);
         }
+
+
+        public async Task<ActionResult> pushlish(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Survey survey = await db.Surveys.FindAsync(id);
+            if (survey == null)
+            {
+                return HttpNotFound();
+            }
+            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByName(System.Web.HttpContext.Current.User.Identity.GetUserName());
+
+            if (user == null || !user.Id.Equals(survey.SupplierID))
+            {
+                return RedirectToAction("Error");
+            }
+            survey.Discontinued = !survey.Discontinued;
+            db.Entry(survey).State = EntityState.Modified;
+            await db.SaveChangesAsync();
+            return RedirectToAction("Index");
+            //return View(survey);
+        }
+
 
         // GET: Surveys/Delete/5
         public async Task<ActionResult> Delete(int? id)
@@ -175,11 +212,10 @@ namespace new123.Controllers
             {
                 return HttpNotFound();
             }
-            ApplicationUser user = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindByName(System.Web.HttpContext.Current.User.Identity.GetUserName());
 
-            if (user == null || !user.Id.Equals(survey.SupplierID))
+            if (survey.Discontinued)
             {
-                return RedirectToAction("Error");
+                return HttpNotFound();
             }
             return View(survey);
         }

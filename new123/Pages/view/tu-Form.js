@@ -83,9 +83,12 @@ function ObjectKoQuestionForm(question) {
             var valid = true;
             var text = fself.answer();
             var re = new RegExp(fself.regular());
-            console.log(text);
             if (!re.test(text))
             {          
+                valid = false;
+            }
+            if (text === '' && fself.isrequired)
+            {
                 valid = false;
             }
 
@@ -117,8 +120,39 @@ function ObjectKoQuestionForm(question) {
                 }
             });
             regex = regex + ".*";
-            
 
+            if (fself.requiredcontent.inputtype === 'tel')
+            {
+                regex = '[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}';
+            }
+            if (fself.requiredcontent.inputtype === 'color')
+            {
+                regex = '^#?([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$';
+            }
+            if (fself.requiredcontent.inputtype === 'email')
+            {
+                regex = '^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$';
+            }
+            if (fself.requiredcontent.inputtype === 'url')
+            {
+                regex = '/^(ftp|http|https):\/\/[^ "]+$ /';
+            }
+            if (fself.requiredcontent.inputtype === 'tel')
+            {
+                regex = '[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}';
+            }
+            if (fself.requiredcontent.inputtype === 'tel')
+            {
+                regex = '[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}';
+            }
+            if (fself.requiredcontent.inputtype === 'tel')
+            {
+                regex = '[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}';
+            }
+            if (fself.requiredcontent.inputtype === 'tel')
+            {
+                regex = '[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}';
+            }
             return regex;
         },
         getscore: function()
@@ -140,7 +174,7 @@ function ObjectKoQuestionForm(question) {
             var sc = -1;
             choices.forEach(function (c)
             {
-                if (fself.btype === "bdropdown")
+                if (fself.btype === "bdropdown" || fself.btype === "bcheckbox")
                 {
                     if (fself.selectedOptions()[0] === c().choice_value())
                     {

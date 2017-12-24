@@ -1,0 +1,11 @@
+﻿body {
+    padding-left: 7rem;
+    padding-right: 7rem;
+}
+.none-underline-link a{
+    text-decoration: none;
+}
+.list{
+    padding-top: 3rem;
+    min-height: 40rem;
+}

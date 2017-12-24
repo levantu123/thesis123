@@ -359,6 +359,10 @@ function obsrequiredcontent(requiredcontent)
             {
                 t = true;
             }
+            if (rself.inputtype() === 'range')
+            {
+                t = true;
+            }
             return t;
         },
         min: ko.observable(requiredcontent.min),

@@ -1,7 +1,7 @@
 ﻿<div class="question-mask">
     <span>Question </span><span data-bind="text: $index"></span>
     <div class="q-btns">
-        <input type="checkbox" value="Edit" data-bind="checked: inedit" />
+        <input class="w3-check" type="checkbox" value="Edit" data-bind="checked: inedit" /> Edit Mode
         <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removeQuestion" />
     </div>
 </div>
@@ -9,7 +9,7 @@
 <div class="q-shortdescription"><h4 data-bind="text: shortdescription, visible: useshortdescription"></h4></div>
 <div data-bind="foreach: choices" class="q-choices">
     <div class="q-choice">
-        <input type="radio" disabled="disabled" />
+        <input class="w3-radio" type="radio" disabled />
         <span data-bind="text: choice_value"></span>
     </div>
 </div>

@@ -13,6 +13,6 @@
 @Scripts.Render("~/Pages/view/mainform.js")
 <h2>Form</h2>
 <div id='survey-content'>
-    <div class="survey-area" data-bind="template: { name: whichTemplateToUse4, data: items3 }"></div>
+    <div class="survey-area" data-bind="template: { name: whichTemplateToUse4, data: items3, as: 'sur' }"></div>
 </div>
 <div><input type="button" value="Submit" onclick="SubmitResponseToDatabase()" /></div>

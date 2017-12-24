@@ -16,8 +16,13 @@
             <span data-bind="text: svalue"></span>
         </div>
         <div data-bind="foreach: $parent.column">
-            <div class="col-sm-2">
-                <input type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer"  />
+            <div class="col-sm-2">          
+                <div data-bind="ifnot: question.isvalid()">
+                    <input required type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer" />
+                </div>
+                <div data-bind="if: question.isvalid()">
+                    <input type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer" />
+                </div>
             </div>
         </div>
     </div>

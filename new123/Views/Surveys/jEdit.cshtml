@@ -9,6 +9,7 @@
     surveryid = @Html.DisplayFor(model => model.SurveyID);
 
 </script>
+@Styles.Render("~/Pages/src/css/w3.css")
 @Scripts.Render("~/Pages/view/Global.js")
 @Scripts.Render("~/Pages/view/tu-menu.js")
 @Scripts.Render("~/Pages/view/tu-view.js")
@@ -20,7 +21,7 @@
 </div>
 
 <div id='survey-content'>
-    <div class="survey-area" data-bind="template: { name: whichTemplateToUse, data: items }"></div>
+    <div class="survey-area" data-bind="template: { name: whichTemplateToUse, data: items, as: 'sur' }"></div>
 </div>
 <div><input type="button" value="Save" onclick="updateSurveyData()" /></div>
 <div>@Html.ActionLink("Preview", "Preview", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>

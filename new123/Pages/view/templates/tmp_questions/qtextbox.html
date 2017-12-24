@@ -38,13 +38,16 @@
         <b class="edit-label"><span>Options</span></b> 
         
         <div data-bind="foreach: choices" class="q-choices-edit">
-            <div>
+            <div class="opttion-row">
                 <span>Option </span>
                 <input data-bind="value: choice_value" />
                 <span data-bind="visible:$parent.isscored">Score</span>
                 <input class="number-edit" type="number" data-bind="value: score, visible:$parent.isscored" />
                 <span data-bind="visible:$parent.nextpagedetect">Next page</span>
-                <input class="number-edit" type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+                <select data-bind="foreach: sur.pages, value: nextpage, visible:$parent.nextpagedetect">
+                    <option data-bind="text: $index()+1, value: $index"></option>
+                </select>
+                <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removechoice" />
             </div>
         </div>
         <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20"  data-bind="click:addchoice" />
@@ -58,38 +61,48 @@
                 <select data-bind="value: inputtype">
                     <option data-bind="text: 'text'">text</option>
                     <option data-bind="text: 'number'">number</option>
-                    <option data-bind="text: 'regular expresion'">regular expresion</option>
+                    <option data-bind="text: 'color'">color</option>
+                    <option data-bind="text: 'date'">date</option>
+                    <option data-bind="text: 'datetime-local'">datetime-local</option>
+                    <option data-bind="text: 'email'">email</option>
+                    <option data-bind="text: 'month'">month</option>
+                    <option data-bind="text: 'password'">password</option>
+                    <option data-bind="text: 'range'">range</option>
+                    <option data-bind="text: 'tel'">tel</option>
+                    <option data-bind="text: 'time'">time</option>
+                    <option data-bind="text: 'url'">url</option>
+                    <option data-bind="text: 'week'">week</option>
                 </select>
 
             <b class="edit-label"><span data-bind="visible:isnumber()">Min value</span></b>    
             <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmin" />
             <b class="edit-label"><span data-bind="visible:isnumber()">Max value</span></b>    
             <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmax" />
-            <b class="edit-label"><span data-bind="visible:!isnumber()">Min length</span></b>
+            <b class="edit-label"><span data-bind="visible: inputtype() =='text'">Min length</span></b>
 
                 
                 
-            <input class="number-edit" type="number" data-bind="visible:!isnumber(), value: min" />
-            <b class="edit-label"><span data-bind="visible:!isnumber()">Max length</span></b>      
-            <input class="number-edit" type="number" data-bind="visible:!isnumber(), value: min" />
+            <input class="number-edit" type="number" data-bind="visible:inputtype() =='text', value: min" />
+            <b class="edit-label"><span data-bind="visible:inputtype() =='text'">Max length</span></b>      
+            <input class="number-edit" type="number" data-bind="visible:inputtype() =='text', value: max" />
             
             <div>
-                <b class="edit-label"><span data-bind="visible: !isnumber()">Requried Words</span></b>
-                <div data-bind="foreach: must, visible:!isnumber()">
-                    <div>
+                <b class="edit-label"><span data-bind="visible: inputtype() =='text'">Requried Words</span></b>
+                <div data-bind="foreach: must, visible: inputtype() =='text'">
+                    <div class="opttion-row">
                         <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removemust" />
                     </div>
                 </div>
-                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addmust, visible:!isnumber()" />
+                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addmust, visible: inputtype() =='text'" />
             </div>   
             <div>
-                <span data-bind="visible: !isnumber()">Banned Words</span>
-                <div data-bind="foreach: mustnot, visible:!isnumber()">
-                    <div>
+                <span data-bind="visible: inputtype() =='text'">Banned Words</span>
+                <div data-bind="foreach: mustnot, visible: inputtype() =='text'">
+                    <div class="opttion-row">
                         <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removebanned" />
                     </div>
                 </div>
-                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addbanned, visible:!isnumber()" />
+                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addbanned, visible: inputtype() =='text'" />
             </div>            
         </div>
     </div>
