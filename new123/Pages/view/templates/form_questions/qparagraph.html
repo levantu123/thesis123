@@ -5,8 +5,8 @@
 
 
 <div data-bind="ifnot: isrequired">
-    <textarea type="text" data-bind="value:answer, attr: {type: requiredcontent.inputtype, min: requiredcontent.nmin, max: requiredcontent.nmax, minlength: requiredcontent.min, maxlength: requiredcontent.max, pattern: regular()}" style="width:500px;height:150px;" />
+    <textarea type="text" data-bind="value:answer, attr: {type: requiredcontent.inputtype, min: requiredcontent.nmin, max: requiredcontent.nmax, minlength: requiredcontent.min, maxlength: requiredcontent.max, pattern: regular()}" style="width:100%;height:150px;" />
 </div>
 <div data-bind="if: isrequired">
-    <textarea type="text" required data-bind="ifnot: required(), value:answer, attr: {type: requiredcontent.inputtype, min: requiredcontent.nmin, max: requiredcontent.nmax, minlength: requiredcontent.min, maxlength: requiredcontent.max ,pattern: regular()}" style="width:500px;height:150px;" />
+    <textarea type="text" required data-bind="ifnot: required(), value:answer, attr: {type: requiredcontent.inputtype, min: requiredcontent.nmin, max: requiredcontent.nmax, minlength: requiredcontent.min, maxlength: requiredcontent.max ,pattern: regular()}" style="width:100%;height:150px;" />
 </div>

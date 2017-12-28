@@ -18,10 +18,10 @@
                     </div>
                 </div>
                 <div class="tab-button" data-bind="ifnot:  ($index()== $parent.getlength()-1)">
-                    <input class="w3-btn w3-green" type="submit" value="Next page" data-bind="if: ($index()< $parent.getlength()-2), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                    <input class="w3-btn w3-green" type="submit" value="Next page" data-bind="if: ($index()< $parent.getlength()-2), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
                 </div>
                 <div class="tab-button" data-bind="if:  ($index()== $parent.getlength()-1)">
-                    <input class="w3-btn w3-green" type="submit" value="Submit" data-bind="if: ($index()== $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                    <input class="w3-btn w3-green" type="submit" value="Submit" data-bind="if: ($index()== $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
                 </div>
 
             </form>
@@ -40,10 +40,13 @@
                 </div>
 
                 <div class="tab-button" data-bind="ifnot:  ($index()== $parent.getlength()-1)">
-                    <input class="w3-btn w3-green" type="submit" value="Next page" data-bind="if: ($index()< $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                    <input class="w3-btn w3-green" type="submit" value="Next page" data-bind="if: ($index()< $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
                 </div>
-                <div class="tab-button" data-bind="if:  ($index()== $parent.getlength()-1)">
-                    <input class="w3-btn w3-green" type="submit" value="Submit" data-bind="if: ($index()< $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: ((getnextpage()==-1)?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                <div class="tab-button" data-bind="if:  (($index()== $parent.getlength()-1))&& (!isvalid())">
+                    <input class="w3-btn w3-green" type="submit" value="Submit" data-bind="if: ($index()< $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                </div>
+                <div class="tab-button" data-bind="if:  (($index()== $parent.getlength()-1))&& (isvalid())">
+                    <input class="w3-btn w3-green" type="button" value="Submit" onclick="SubmitResponseToDatabase()" />
                 </div>
 
                 <a class="tab-button w3-btn w3-green" data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: (($parent.getbackpage($index())!=-1)? '#page'+($parent.getbackpage($index())) :'#page'+($index()-1))}">Back</a>

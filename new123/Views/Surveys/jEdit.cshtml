@@ -23,7 +23,6 @@
 <div id='survey-content'>
     <div class="survey-area" data-bind="template: { name: whichTemplateToUse, data: items, as: 'sur' }"></div>
 </div>
-<div><input type="button" value="Save" onclick="updateSurveyData()" /></div>
 <div>@Html.ActionLink("Preview", "Preview", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>
 <div>@Html.ActionLink("Public", "Form", new { id = @Html.DisplayFor(model => model.SurveyID) })</div>
 

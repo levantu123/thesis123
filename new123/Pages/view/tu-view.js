@@ -2,22 +2,29 @@
 
 function updateSurveyData() {
     var str;
-    $.ajax({
-        url: "/Surveys/updateSurvey",
-        type: 'POST',
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "text",
-        processData: true,
-        data: JSON.stringify({ id: surveryid, json: ko.toJSON(survey1) }),
-        success: function (data) {
-            str = data;
-        },
-        failure: function (data) {
-            alert("Fail " + data);
-        }
+    var con = confirm("Confirm save the change?");
+    if (con)
+    {
+        $.ajax({
+            url: "/Surveys/updateSurvey",
+            type: 'POST',
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "text",
+            processData: true,
+            data: JSON.stringify({ id: surveryid, json: ko.toJSON(survey1) }),
+            success: function (data)
+            {
+                str = data;
+            },
+            failure: function (data)
+            {
+                alert("Fail " + data);
+            }
 
-    });
+        });
+    }
+    
     return str;
 }
 

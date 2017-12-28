@@ -10,8 +10,35 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>Create</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Pages/src/css/w3.css")
 </head>
 <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SUR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-link">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("About", "About", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("Surveys", "Index", "Surveys")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/jqueryval")
     
@@ -20,36 +47,31 @@
     {
         @Html.AntiForgeryToken()
         
-        <div class="form-horizontal">
-            <h4>Survey</h4>
-            <hr />
+        <div style="width: 700px" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+            <h2 class="w3-center">Create</h2>
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             
-    
-            <div class="form-group">
-                @Html.LabelFor(model => model.SurveyName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.SurveyName, new { htmlAttributes = new { @class = "form-control" } })
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+                <span class="control-label col-md-2">Survey name</span>
+                <div class="w3-rest">
+                    @Html.EditorFor(model => model.SurveyName, new { htmlAttributes = new { @class = "w3-input w3-border" } })
                     @Html.ValidationMessageFor(model => model.SurveyName, "", new { @class = "text-danger" })
                 </div>
             </div>
-            
-    
-            <div class="form-group">
-                <span class = "control-label col-md-2">Description</span>
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.SurveyJson, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.SurveyJson, "", new { @class = "text-danger" })
+
+            <div class="w3-row w3-section">
+                <div class="w3-col" style="width:50px">
+                    <i class="w3-xxlarge fa fa-user"></i>
                 </div>
-            </div>
-    
-            
-    
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
+                <span class="control-label col-md-2">Description</span>
+                <div class="w3-rest">
+                   @Html.EditorFor(model => model.SurveyJson, new { htmlAttributes = new { @class = "w3-input w3-border" } })
+                @Html.ValidationMessageFor(model => model.SurveyJson, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>         
+                    <input type="submit" value="Create" class="w3-button w3-block w3-section w3-blue w3-ripple w3-padding" />
+            
         </div>
     }
     

@@ -2,22 +2,29 @@
 
 function SubmitResponseToDatabase() {
     var str;
-    $.ajax({
-        url: "/Surveys/submitResponse",
-        type: 'POST',
-        async: false,
-        contentType: "application/json; charset=utf-8",
-        dataType: "text",
-        processData: true,
-        data: JSON.stringify({ id: surveryid, json: ko.toJSON(getCurrentSolutionObject(getCurrentJsFormObject())) }),
-        success: function (data) {
-            str = data;
-        },
-        failure: function (data) {
-            alert("Fail " + data);
-        }
+    var con = confirm("Confirm the submition?");
+    if (con)
+    {
+        $.ajax({
+            url: "/Surveys/submitResponse",
+            type: 'POST',
+            async: false,
+            contentType: "application/json; charset=utf-8",
+            dataType: "text",
+            processData: true,
+            data: JSON.stringify({ id: surveryid, json: ko.toJSON(getCurrentSolutionObject(getCurrentJsFormObject())) }),
+            success: function (data)
+            {
+                str = data;
+            },
+            failure: function (data)
+            {
+                alert("Fail " + data);
+            }
 
-    });
+        });
+    }
+    
     return str;
 }
 
