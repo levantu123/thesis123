@@ -54,56 +54,75 @@
     </div>
     <div class="q-required-content-edit edit-block" data-bind="with: requiredcontent">
         <div class="moreoption-bar"><b class="edit-label"><span>More options</span></b></div>
-        <b class="edit-label"><span>Used</span></b>  <input type="checkbox" data-bind="checked: used" />
-        <div data-bind="visible: used">
-            <b class="edit-label">
-                <span>Input type</span></b>
-                <select data-bind="value: inputtype">
-                    <option data-bind="text: 'text'">text</option>
-                    <option data-bind="text: 'number'">number</option>
-                    <option data-bind="text: 'color'">color</option>
-                    <option data-bind="text: 'date'">date</option>
-                    <option data-bind="text: 'datetime-local'">datetime-local</option>
-                    <option data-bind="text: 'email'">email</option>
-                    <option data-bind="text: 'month'">month</option>
-                    <option data-bind="text: 'password'">password</option>
-                    <option data-bind="text: 'range'">range</option>
-                    <option data-bind="text: 'tel'">tel</option>
-                    <option data-bind="text: 'time'">time</option>
-                    <option data-bind="text: 'url'">url</option>
-                    <option data-bind="text: 'week'">week</option>
-                </select>
-
-            <b class="edit-label"><span data-bind="visible:isnumber()">Min value</span></b>    
-            <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmin" />
-            <b class="edit-label"><span data-bind="visible:isnumber()">Max value</span></b>    
-            <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmax" />
-            <b class="edit-label"><span data-bind="visible: inputtype() =='text'">Min length</span></b>
-
-                
-                
-            <input class="number-edit" type="number" data-bind="visible:inputtype() =='text', value: min" />
-            <b class="edit-label"><span data-bind="visible:inputtype() =='text'">Max length</span></b>      
-            <input class="number-edit" type="number" data-bind="visible:inputtype() =='text', value: max" />
-            
-            <div>
-                <b class="edit-label"><span data-bind="visible: inputtype() =='text'">Requried Words</span></b>
-                <div data-bind="foreach: must, visible: inputtype() =='text'">
-                    <div class="opttion-row">
-                        <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removemust" />
-                    </div>
-                </div>
-                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addmust, visible: inputtype() =='text'" />
-            </div>   
-            <div>
-                <span data-bind="visible: inputtype() =='text'">Banned Words</span>
-                <div data-bind="foreach: mustnot, visible: inputtype() =='text'">
-                    <div class="opttion-row">
-                        <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removebanned" />
-                    </div>
-                </div>
-                <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addbanned, visible: inputtype() =='text'" />
-            </div>            
-        </div>
+        <div><b class="edit-label w3-quarter"><span>Used</span></b>  <input type="checkbox" data-bind="checked: used" /></div>
+                                                     <div data-bind="visible: used">
+                                                         <div>
+                                                             <b class="edit-label w3-third">
+                                                                 <span>Input type</span>
+                                                             </b>
+                                                             <select data-bind="value: inputtype">
+                                                                 <option data-bind="text: 'text'">text</option>
+                                                                 <option data-bind="text: 'number'">number</option>
+                                                                 <option data-bind="text: 'color'">color</option>
+                                                                 <option data-bind="text: 'date'">date</option>
+                                                                 <option data-bind="text: 'time'">time</option>
+                                                                 <option data-bind="text: 'datetime-local'">datetime-local</option>
+                                                                 <option data-bind="text: 'email'">email</option>
+                                                                 <option data-bind="text: 'month'">month</option>
+                                                                 <option data-bind="text: 'password'">password</option>
+                                                                 <option data-bind="text: 'range'">range</option>
+                                                                 <option data-bind="text: 'tel'">tel</option>
+                                                                 <option data-bind="text: 'time'">time</option>
+                                                                 <option data-bind="text: 'url'">url</option>
+                                                                 <option data-bind="text: 'week'">week</option>
+                                                             </select>
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible:isnumber()">Min value</span></b>
+                                                             <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmin, attr: {step: step}" />
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible:isnumber()">Max value</span></b>
+                                                             <input class="number-edit" type="number" data-bind="visible:isnumber(), value: nmax, attr: {step: step}" />
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible:isnumber()">Step</span></b>
+                                                             <input class="number-edit" type="number" step="0.01" data-bind="visible:isnumber(), value: step" />
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible: inputtype() =='text'">Min length</span></b>
+                                                             <input class="number-edit" type="number" data-bind="visible:inputtype() =='text', value: min" />
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible:inputtype() =='text'">Max length</span></b>
+                                                             <input class="number-edit" type="number" data-bind="visible:inputtype() =='text', value: max" />
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible: inputtype() =='date'">Min date</span></b>
+                                                             <input class="date-edit" type="date" data-bind="visible:inputtype() =='date', value: minday" />
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible:inputtype() =='date'">Max date</span></b>
+                                                             <input class="date-edit" type="date" data-bind="visible:inputtype() =='date', value: maxday" />
+                                                         </div>                                                                                                 
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible: inputtype() =='text'">Requried Words</span></b>
+                                                             <div class="mustandnotlist" data-bind="foreach: must, visible: inputtype() =='text'">
+                                                                 <div class="opttion-row">
+                                                                     <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removemust" />
+                                                                 </div>
+                                                             </div>
+                                                             <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addmust, visible: inputtype() =='text'" />
+                                                         </div>
+                                                         <div>
+                                                             <b class="edit-label w3-third"><span data-bind="visible: inputtype() =='text'">Banned Words</span></b>
+                                                             <div class="mustandnotlist" data-bind="foreach: mustnot, visible: inputtype() =='text'">
+                                                                 <div class="opttion-row">
+                                                                     <input type="text" data-bind="value: svalue" /><input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removebanned" />
+                                                                 </div>
+                                                             </div>
+                                                             <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click: addbanned, visible: inputtype() =='text'" />
+                                                         </div>
+                                                     </div>
     </div>
 </div>

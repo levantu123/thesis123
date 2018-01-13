@@ -61,6 +61,9 @@ namespace new123.Models
         public string inputtype { get; set; }
         public int nmin { get; set; }
         public int nmax { get; set; }
+        public double step { get; set; }
+        public string maxday { get; set; }
+        public string minday { get; set; }
         public word [] must { get; set; }
         public word [] mustnot { get; set; }
     }

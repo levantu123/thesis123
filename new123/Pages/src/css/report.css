@@ -1,0 +1,20 @@
+﻿.datatable {
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    padding-top: 5rem;
+}
+.datashowmenu {
+    width: 130px;
+    float: left;
+    min-height: 850px;
+    background-color: #a38dad30;
+}
+.datashow{
+    height: 500px;
+    float: left
+}
+.dataeare {
+    min-height: 850px;
+    display: block;
+    background-color: #eff5f2;
+}

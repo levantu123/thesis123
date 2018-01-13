@@ -53,6 +53,9 @@
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -118,6 +121,9 @@ function newCheckbox()
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -187,6 +193,9 @@ function newMatrix1()
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -257,6 +266,9 @@ function newMatrix3()
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -325,6 +337,9 @@ function newMatrix2()
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -369,6 +384,9 @@ function obsrequiredcontent(requiredcontent)
         max: ko.observable(requiredcontent.max),
         nmin: ko.observable(requiredcontent.nmin),
         nmax: ko.observable(requiredcontent.nmax),
+        step: ko.observable(requiredcontent.step),
+        minday: ko.observable(requiredcontent.minday),
+        maxday: ko.observable(requiredcontent.maxday),
         must: ko.observableArray(mustws),
         mustnot: ko.observableArray(mustnws),
         addbanned: function ()
@@ -444,6 +462,9 @@ function newDropdown() {
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -505,6 +526,9 @@ function newTextbox() {
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -565,6 +589,9 @@ function newPharagraph() {
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -631,6 +658,9 @@ function newnMultiple() {
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -699,6 +729,9 @@ function newnCheckbox()
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -770,6 +803,9 @@ function newnMatrix1()
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -840,6 +876,9 @@ function newnMatrix2()
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -905,6 +944,9 @@ function newnDropdown() {
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -966,6 +1008,9 @@ function newnTextbox() {
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),
@@ -1026,6 +1071,9 @@ function newnPharagraph() {
             max: 100,
             nmin: 0,
             nmax: 100,
+            step: 1,
+            minday: "",
+            maxday: "",
             must: [],
             mustnot: []
         })),

@@ -1,4 +1,4 @@
-﻿<table>
+﻿<table class="datatable">
     <thead>
         <tr data-bind="foreach: Questions">
             <th data-bind="text: title"></th>
@@ -7,21 +7,45 @@
     <tbody data-bind="foreach:responses">
         <tr data-bind="foreach:answers">
             <th>
-                <input type="text" data-bind="value:answer"/>
+                <input type="text" data-bind="value:answer" />
             </th>
         </tr>
     </tbody>
 </table>
-<div data-bind="foreach: Charts">
-    <div style="width:500px">
-        <div>
-            <span data-bind="text: title"></span>
+<hr />
+<div class="dataeare">
+    <ul class="datashowmenu nav nav-pills nav-stacked" data-bind="foreach: Charts">
+        <li><a data-toggle="tab" data-bind="attr:{ href: '#question'+ $index()}, text: 'Question '+ $index()"></a></li>
+    </ul>
+
+    <div class="tab-content datashow" data-bind="foreach: Charts">
+        <div id="home" class="tab-pane fade" data-bind="attr:{id:'question'+$index()}">
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" data-bind="attr:{href: '#question'+$index()+'data'}, text: 'Data'"></a></li>
+                <li class=""><a data-toggle="tab" data-bind="attr:{href: '#question'+$index()+'pie'}, text: 'Pie Chart'"></a></li>
+                <li class=""><a data-toggle="tab" data-bind="attr:{href: '#question'+$index()+'bar'}, text: 'Bar Graph'"></a></li>
+                <li class=""><a data-toggle="tab" data-bind="attr:{href: '#question'+$index()+'line'}, text: 'Line Graph'"></a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane fade in active" data-bind="attr:{id: 'question'+$index()+'data'}">
+                    <span data-bind="text: title"></span>
+                </div>
+                <div class="tab-pane fade" data-bind="attr:{id: 'question'+$index()+'pie'}">
+                    <canvas data-bind="attr:{id: 'chart-pie' + qid}, visible: isShowPie" width="200" height="400"></canvas>
+                </div>
+                <div class="tab-pane fade" data-bind="attr:{id: 'question'+$index()+'bar'}">
+                    <canvas data-bind="attr:{id: 'chart-bar' + qid}, visible: isShowBar" width="200" height="400"></canvas>
+                </div>
+                <div class="tab-pane fade" data-bind="attr:{id: 'question'+$index()+'line'}">
+                    <canvas data-bind="attr:{id: 'chart-line' + qid}, visible: isShowLine" width="200" height="400"></canvas>
+                </div>
+            </div>
+
+
         </div>
-        <span>Show Pie Chart </span><input type="checkbox" data-bind="checked: isShowPie"/>
-        <span>&nbsp; Show Bar Chart </span><input type="checkbox" data-bind="checked: isShowBar" />
-        <span>&nbsp; Show Line Chart </span><input type="checkbox" data-bind="checked: isShowLine" />
-        <canvas data-bind="attr:{id: 'chart-pie' + qid}, visible: isShowPie" width="200" height="400"></canvas>
-        <canvas data-bind="attr:{id: 'chart-bar' + qid}, visible: isShowBar" width="200" height="400"></canvas>
-        <canvas data-bind="attr:{id: 'chart-line' + qid}, visible: isShowLine" width="200" height="400"></canvas>
     </div>
+
 </div>
+
+<div></div>

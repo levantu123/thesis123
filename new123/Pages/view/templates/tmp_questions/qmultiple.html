@@ -43,13 +43,19 @@
         <b class="edit-label"><span>Options</span></b>
 
         <div data-bind="foreach: choices" class="q-choices-edit">
-            <div>
-                <span>Option </span>
-                <input data-bind="value: choice_value" />
-                <span data-bind="visible:$parent.isscored">Score</span>
-                <input class="number-edit" type="number" data-bind="value: score, visible:$parent.isscored" />
-                <span data-bind="visible:$parent.nextpagedetect">Next page</span>
-                <input class="number-edit" type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+            <div class="option">
+                <div>
+                    <span class="w3-quarter">Option </span>
+                    <input data-bind="value: choice_value" />
+                </div>
+                <div data-bind="visible:$parent.isscored">
+                    <span class="w3-quarter" data-bind="visible:$parent.isscored">Score</span>
+                    <input type="number" data-bind="value: score, visible:$parent.isscored" />
+                </div>
+                <div data-bind="visible:$parent.nextpagedetect">
+                    <span class="w3-quarter" data-bind="visible:$parent.nextpagedetect">Next page</span>
+                    <input type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+                </div>                            
             </div>
         </div>
         <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addchoice" />

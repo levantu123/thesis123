@@ -271,6 +271,7 @@
     <Content Include="Pages\pictures\menu.png" />
     <Content Include="Pages\pictures\page.png" />
     <Content Include="Pages\src\css\list.css" />
+    <Content Include="Pages\src\css\report.css" />
     <Content Include="Pages\src\css\w3.css" />
     <Content Include="Pages\view\templates\form_questions\qcheckbox.html" />
     <Content Include="Pages\view\templates\form_questions\qmatrix1.html" />
