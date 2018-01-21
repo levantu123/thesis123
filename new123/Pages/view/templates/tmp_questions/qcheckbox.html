@@ -16,42 +16,51 @@
 <div class="edit" data-bind="visible: inedit">
     <div class="q-title-edit edit-block">
         <b class="edit-label"><span>Question</span></b>
-        <input class="textbox-edit" data-bind="value: title" />
+        <input class="textbox-edit" data-bind="value: title" placeholder="Enter your question here!" />
     </div>
-    <div class="q-required-edit edit-block">
-        <b class="edit-label"><span>Required </span></b>
+    <div class="edit-block">
+        <b class="edit-label"><span data-bind="visible: useshortdescription">Short Description</span></b>
+        <input class="textbox-edit" placeholder="Describe your question here!" data-bind="value: shortdescription, visible : useshortdescription" />
+    </div>
+    <div class="q-required-edit edit-block inline-option">
         <input type="checkbox" data-bind="checked:isrequired" />
+        <b class="edit-label"><span>Required </span></b>
     </div>
-    <div class="q-description-edit edit-block">
-
-        <b class="edit-label"><span>Use Short Description</span></b>
+    <div class="q-description-edit edit-block inline-option">
         <input type="checkbox" data-bind="checked: useshortdescription" />
-        <div>
-            <b class="edit-label"><span data-bind="visible: useshortdescription">Short Description</span></b>
-            <input class="textbox-edit" data-bind="value: shortdescription, visible : useshortdescription" />
-        </div>
+        <b class="edit-label"><span>Use Short Description</span></b>
     </div>
-    <div class="q-score-edit edit-block">
-        <b class="edit-label"><span>Score feature</span></b>
+    <div class="q-score-edit edit-block inline-option">
         <input type="checkbox" data-bind="checked: isscored" />
+        <b class="edit-label"><span>Score feature</span></b>
     </div>
-    <div class="q-detect-edit edit-block">
-        <b class="edit-label"><span>Use to detect next page </span></b>
+    <div class="q-detect-edit edit-block inline-option">
         <input type="checkbox" data-bind="checked:nextpagedetect" />
+        <b class="edit-label"><span>Use to detect next page </span></b>
     </div>
     <div class="q-options-edit edit-block">
         <b class="edit-label"><span>Options</span></b>
-
-        <div data-bind="foreach: choices" class="q-choices-edit">
-            <div>
-                <span>Option </span>
-                <input data-bind="value: choice_value" />
-                <span data-bind="visible:$parent.isscored">Score</span>
-                <input class="number-edit" type="number" data-bind="value: score, visible:$parent.isscored" />
-                <span data-bind="visible:$parent.nextpagedetect">Next page</span>
-                <input class="number-edit" type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+        <div style="margin-bottom: 3px;" data-bind="foreach: choices" class="q-choices-edit">
+            <div class="option">
+                <div>
+                    <span class="edit-label">Option </span>
+                    <input class="textbox-edit" data-bind="value: choice_value" />
+                </div>
+                <div class="inline-option" style="height:23px; background-color:transparent">
+                    <input class="button remove-button" style="float:right;" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removechoice" />
+                </div>
+                <div class="inline-option" data-bind="visible:$parent.isscored">
+                    <span data-bind="visible:$parent.isscored">Score</span>
+                    <input class="number-edit" type="number" data-bind="value: score, visible:$parent.isscored" />
+                </div>
+                <div class="inline-option" data-bind="visible:$parent.nextpagedetect">
+                    <span data-bind="visible:$parent.nextpagedetect">Next page</span>
+                    <input class="number-edit" type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
+                </div>
             </div>
         </div>
-        <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addchoice" />
+        <div>
+            <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addchoice" />
+        </div>
     </div>
 </div>

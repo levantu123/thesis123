@@ -1159,7 +1159,7 @@ function obsChoices(choices)
             nextpage: ko.observable(choice.nextpage),
             score: ko.observable(choice.score)
         };
-        temp_choices.push(ko.observable(temp_choice));
+        temp_choices.push(temp_choice);
     });
     return temp_choices;
 }
@@ -1168,9 +1168,9 @@ function obsrow(row)
     var srow = [];
     row.forEach(function (r)
     {
-        srow.push(ko.observable({
+        srow.push({
             svalue: ko.observable(r.svalue)
-        }));
+        });
     });
     return srow;
 }
@@ -1179,9 +1179,9 @@ function obscolumn(col)
     var scol = [];
     col.forEach(function (r)
     {
-        scol.push(ko.observable({
+        scol.push({
             svalue: ko.observable(r.svalue)
-        }));
+        });
     });
     return scol;
 }

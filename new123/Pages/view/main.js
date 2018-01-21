@@ -26,7 +26,7 @@
             },
             whichTemplateToUse: function () {
                 return 'view';
-            }            
+            }       
         });
   
 

@@ -1,6 +1,7 @@
 ﻿
 
 function updateSurveyData() {
+    document.getElementById("form-survey").submit();
     var str;
     var con = confirm("Confirm save the change?");
     if (con)
@@ -32,7 +33,6 @@ function ObjectKoQuestion(question)
 {
     var row = [];
     var column = [];
-    console.log(question);
     question.row.forEach(function (r)
     {
         row.push({
@@ -60,12 +60,16 @@ function ObjectKoQuestion(question)
         choices: ko.observableArray(obsChoices(question.choices)),      
         requiredcontent: ko.observable(obsrequiredcontent(question.requiredcontent)),
         inedit: ko.observable(false),
+        autofix: function (data, event) {
+            console.log(this);
+        },
         showoption: ko.pureComputed(function ()
         {
             return (pself.isscored() || pself.nextpagedetect());
         }),
         addchoice: function ()
         {
+            pself.choices();
             this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
         },
         addrow: function ()
@@ -82,6 +86,7 @@ function ObjectKoQuestion(question)
         },
         removechoice: function ()
         {
+            console.log(pself.choices());
             pself.choices.remove(this);
         },
         
@@ -142,7 +147,7 @@ function ObjectKoSurveyData(sjson) {
         tself.pages.remove(this);
     };
     tself.addPage = function () {
-        tself.pages.push(ObjectKoPage({ questions:[]}));
+        tself.pages.push(ObjectKoPage({ page_title: "untitle", shortdescription: "", questions: [], doafter:0}));
     };
     return tself;
 }
@@ -151,3 +156,5 @@ survey1 = ObjectKoSurveyData(JSON.parse(getSurveyDatajson() + ""));
 function getCurrentJsonSurveyDataString() {
     return ko.toJSON(survey1);
 }
+
+

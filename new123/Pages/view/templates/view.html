@@ -1,33 +1,44 @@
-﻿
-<div class="survey-header-bar">
-    <span>Title: </span>
-    <span data-bind="text: sname"></span>
-    
-</div>
-
-<div class="page-block" data-bind="foreach: pages">
-    <div class="page-area">
-        <div class="page-bar">
-            <div class="page-title">
-                <span>Page </span>
-                <span data-bind="text:($index()+1)"></span>
-            </div>
-            <div class="page-button">
-                <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove_button.png" width="20" height="20" value="Remove" data-bind="click: $parent.removePage" />
-            </div>
+﻿<form id="form-survey">
+    <div class="survey-header-bar">
+        <div class="survey-title">
+            <span data-bind="text: sname"></span>
+        </div>
+        <div class="survey-description">
+            <span data-bind="text: shortdescription"></span>
         </div>
 
-        <div data-bind="sortable: {data: questions, as: 'question'} " class="question-block">
-            <div>
-                <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/tmp_questions'}"></div>
-            </div>
-        </div>
     </div>
-    
-</div>
-<div class="tab-button">
-    <input class="w3-btn w3-green" type="button" value="Add page" data-bind="click: addPage" />
-</div>
- <div class="tab-button">
-    <input class="w3-btn w3-green" type="button" value="Save" onclick="updateSurveyData()" />
- </div>
+
+    <div class="page-block" data-bind="foreach: pages">
+        <div class="page-area">
+            <div class="page-bar">
+                <div class="page-info">
+                    <div class="page-title">
+                        <span class="t-span-5" data-bind="text:'['+($index()+1)+']'"></span>
+                        <input data-bind="value: page_title" placeholder="Enter page title here!" />
+                    </div>
+                    <div class="page-description">
+                        <span class="t-span-5"></span>
+                        <input data-bind="value: shortdescription" placeholder="Describe the page here!" />
+                    </div>
+                </div>
+                <div class="page-button">
+                    <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove_button.png" width="20" height="20" value="Remove" data-bind="click: $parent.removePage" />
+                </div>
+            </div>
+
+            <div data-bind="sortable: {data: questions, as: 'question'} " class="question-block">
+                <div>
+                    <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/tmp_questions'}"></div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="tab-button">
+        <input class="w3-btn w3-green" type="button" value="Add page" data-bind="click: addPage" />
+    </div>
+    <div class="tab-button">
+        <input class="w3-btn w3-green" formaction="/index.asp" type="submit" onclick="updateSurveyData()" value="Save" />
+    </div>
+</form>
