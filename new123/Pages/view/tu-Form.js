@@ -183,16 +183,16 @@ function ObjectKoQuestionForm(question) {
             {
                 if (fself.btype === "bdropdown" || fself.btype === "bcheckbox")
                 {
-                    if (fself.selectedOptions()[0] === c().choice_value())
+                    if (fself.selectedOptions()[0] === c.choice_value())
                     {
-                        sc = c().nextpage();
+                        sc = c.nextpage();
                     }
                 }
                 else
                 {
-                    if (fself.answer() === c().choice_value())
+                    if (fself.answer() === c.choice_value())
                     {
-                        sc = c().nextpage();
+                        sc = c.nextpage();
                     }
                 }
                 

@@ -2,26 +2,28 @@
     <span>Question </span><span data-bind="text: $index"></span>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
-<div class="columns-title row">
-    <div class="col-sm-2"></div>
-    <div data-bind="foreach: column">
-        <div class="col-sm-2">
-            <span data-bind="text: svalue"></span>
+<div class="matrix">
+    <div class="columns-title">
+        <div class="t-span-20"></div>
+        <div data-bind="foreach: column">
+            <div class="t-span-25">
+                <span data-bind="text: svalue"></span>
+            </div>
         </div>
     </div>
-</div>
-<div data-bind="foreach: row" class="q-rows">
-    <div class="q-columns row">
-        <div class="col-sm-2">
-            <span data-bind="text: svalue"></span>
-        </div>
-        <div data-bind="foreach: $parent.column">
-            <div class="col-sm-2">          
-                <div data-bind="ifnot: question.isvalid()">
-                    <input required type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer" />
-                </div>
-                <div data-bind="if: question.isvalid()">
-                    <input type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer" />
+    <div data-bind="foreach: row" class="q-rows">
+        <div class="q-columns">
+            <div class="t-span-20">
+                <span data-bind="text: svalue"></span>
+            </div>
+            <div data-bind="foreach: $parent.column">
+                <div class="t-span-25">
+                    <div data-bind="ifnot: question.isvalid()">
+                        <input required type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer" />
+                    </div>
+                    <div data-bind="if: question.isvalid()">
+                        <input type="radio" data-bind="value: '['+$parent.svalue()+ ', '+svalue()+']', checked: question.answer" />
+                    </div>
                 </div>
             </div>
         </div>

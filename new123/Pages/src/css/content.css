@@ -48,6 +48,7 @@
 .page-area {
     background-color: #337ab726;
     padding-bottom: 5px;
+    margin-bottom: 10px;
 }
 .page-bar {
     background-color: #63d063a3;
@@ -107,9 +108,7 @@
     padding-bottom: 5px;
 }
 .tab-button{
-    padding-top: 20px;
     display: inline-block;
-    padding-left: 20px;
 }
 h2 {
     color: #4caf50;
@@ -337,4 +336,7 @@ h2 {
     .survey-area {
         width: 90%;
     }
+}
+.tab-buttons div{
+    display: inline-block;
 }

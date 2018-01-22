@@ -277,7 +277,13 @@
     <Content Include="Pages\view\templates\form_questions\qmatrix1.html" />
     <Content Include="Pages\view\templates\form_questions\qmatrix2.html" />
     <Content Include="Pages\view\templates\icon\add-button.png" />
-    <Content Include="Pages\view\templates\icon\remove-2-button.png" />
+    <Content Include="Pages\view\templates\icon\checkbox.png" />
+    <Content Include="Pages\view\templates\icon\dropdown.png" />
+    <Content Include="Pages\view\templates\icon\matrix1.png" />
+    <Content Include="Pages\view\templates\icon\matrix2.png" />
+    <Content Include="Pages\view\templates\icon\paragraph.png" />
+    <Content Include="Pages\view\templates\icon\radio.png" />
+    <Content Include="Pages\view\templates\icon\remove-3-button.png" />
     <Content Include="Pages\view\templates\icon\remove_button.png" />
     <Content Include="Pages\pictures\website-background.png" />
     <Content Include="Pages\src\css\cover.css" />
@@ -294,6 +300,8 @@
     <Content Include="Pages\view\templates\form_questions\qmultiple.html" />
     <Content Include="Pages\view\templates\form_questions\qparagraph.html" />
     <Content Include="Pages\view\templates\form_questions\qtextbox.html" />
+    <Content Include="Pages\view\templates\icon\remove-2-button.png" />
+    <Content Include="Pages\view\templates\icon\text.png" />
     <Content Include="Pages\view\templates\menu.html" />
     <Content Include="Pages\view\templates\Preview.html" />
     <Content Include="Pages\view\templates\preview_questions\qparagraph.html" />
