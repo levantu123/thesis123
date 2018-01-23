@@ -31,7 +31,14 @@
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }   
+                }
+            });
         },
         addrow: function ()
         {
@@ -99,7 +106,14 @@ function newCheckbox()
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -158,7 +172,14 @@ function newMatrix1()
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -231,7 +252,14 @@ function newMatrix3()
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -304,7 +332,14 @@ function newMatrix2()
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -404,6 +439,31 @@ function obsrequiredcontent(requiredcontent)
         removemust: function ()
         {
             rself.must.remove(this);
+        },
+        autofixnmin: function () {
+            if (this.nmin() === '') {
+                this.nmin(-9007199254740991);
+            }
+        },
+        autofixnmax: function () {
+            if (this.nmax()===''){
+                this.nmax(9007199254740992);
+            }
+        },
+        autofixmin: function () {
+            if (this.min() === '') {
+                this.min(0);
+            }
+        },
+        autofixmax: function () {
+            if (this.max() === '') {
+                this.max(9007199254740992);
+            }
+        },
+        autofixstep: function () {
+            if (this.step() === '') {
+                this.step(1);
+            }
         }
     };
     return rself;
@@ -429,7 +489,14 @@ function newDropdown() {
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -493,7 +560,14 @@ function newTextbox() {
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -556,7 +630,14 @@ function newPharagraph() {
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -625,7 +706,14 @@ function newnMultiple() {
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -696,7 +784,14 @@ function newnCheckbox()
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -770,7 +865,14 @@ function newnMatrix1()
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -843,7 +945,14 @@ function newnMatrix2()
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -911,7 +1020,14 @@ function newnDropdown() {
             }])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -975,7 +1091,14 @@ function newnTextbox() {
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -1038,7 +1161,16 @@ function newnPharagraph() {
         choices: ko.observableArray(obsChoices([])),
         addchoice: function ()
         {
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'),
+                nextpage: ko.observable(-1),
+                score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
         addrow: function ()
         {
@@ -1157,7 +1289,12 @@ function obsChoices(choices)
         var temp_choice = {
             choice_value: ko.observable(choice.choice_value),
             nextpage: ko.observable(choice.nextpage),
-            score: ko.observable(choice.score)
+            score: ko.observable(choice.score),
+            autofixscore: function () {
+                if (this.score() === "") {
+                    this.score(0);
+                }
+            }
         };
         temp_choices.push(temp_choice);
     });

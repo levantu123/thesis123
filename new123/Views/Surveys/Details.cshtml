@@ -9,40 +9,68 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
+    <title>Create</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Pages/src/css/w3.css")
 </head>
 <body>
-    <div>
-        <h4>Survey</h4>
-        <hr />
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("SUR", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="menu-link">@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("About", "About", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li class="menu-link">@Html.ActionLink("Surveys", "Index", "Surveys")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    <div style="margin-left: 200px; margin-top: 100px">
+       
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.SurveyName)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.SurveyName)
             </dd>
-    
+
             <dt>
                 @Html.DisplayNameFor(model => model.SupplierID)
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.SupplierID)
             </dd>
-              
+
             <dt>
                 <span>Description</span>
             </dt>
-    
+
             <dd>
                 @Html.DisplayFor(model => model.SurveyJson)
             </dd>
-    
+
         </dl>
     </div>
-    <p>
+    <p style="padding-left: 50px">
         @Html.ActionLink("Back to List", "Index")
     </p>
 </body>

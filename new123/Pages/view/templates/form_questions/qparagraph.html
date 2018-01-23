@@ -2,7 +2,7 @@
     <span>Question </span><span data-bind="text: $index"></span>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
-
+<div class="q-shortdescription"><h4 data-bind="text: shortdescription, visible: useshortdescription"></h4></div>
 
 <div data-bind="ifnot: isrequired">
     <textarea type="text" data-bind="value:answer, attr: {type: requiredcontent.inputtype, min: requiredcontent.nmin, max: requiredcontent.nmax, minlength: requiredcontent.min, maxlength: requiredcontent.max, pattern: regular()}" style="width:100%;height:150px;" />

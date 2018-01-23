@@ -134,7 +134,21 @@ function chartdata(column, type)
                     'rgba(255, 206, 86, 0.2)',
                     'rgba(75, 192, 192, 0.2)',
                     'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(0, 255, 0, 0.2)',
+                    'rgba(255, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(128, 255, 0, 0.2)',
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(0, 255, 0, 0.2)',
+                    'rgba(255, 0, 0, 0.2)',
+                    'rgba(0, 0, 0, 0.2)',
+                    'rgba(128, 255, 0, 0.2)'
                 ],
                 borderColor: [
                     'rgba(255,99,132,1)',
@@ -142,7 +156,21 @@ function chartdata(column, type)
                     'rgba(255, 206, 86, 1)',
                     'rgba(75, 192, 192, 1)',
                     'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(0, 255, 0, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(128, 255, 0, 1)',
+                    'rgba(255,99,132,1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(0, 255, 0, 1)',
+                    'rgba(255, 0, 0, 1)',
+                    'rgba(0, 0, 0, 1)',
+                    'rgba(128, 255, 0, 1)'
                 ],
                 borderWidth: 1
             }]
@@ -179,6 +207,19 @@ function getAllChart()
     {    
         if (Questions.indexOf(question) > 0)
         {
+            var data = get1column(Questions.indexOf(question), JSON.parse(getSolutionjson() + ""));
+            var ctx0 = document.getElementById("question" + (Questions.indexOf(question) - 1) + "data");
+            var sum = data.dataPoints.reduce((a, b) => a + b, 0);
+            ctx0.innerHTML = "<span><b>Question: </b>" + question.title + "</span > <br/>";
+            ctx0.innerHTML += "<span><b>Anwser List: </b></span><br/>";
+            data.label.forEach(function (l) {
+                ctx0.innerHTML += "Value: \"" + l + " | ";
+                ctx0.innerHTML += "Quality: " + data.dataPoints[data.label.indexOf(l)] + " | ";
+                ctx0.innerHTML += "Percentage: " + (data.dataPoints[data.label.indexOf(l)] * 100 / sum).toFixed(2)+ "%\" ";
+                ctx0.innerHTML += "</br>"
+            });
+
+
             var ctx1 = document.getElementById("chart-pie" + question.qid.toString()).getContext('2d');
             var config1 = new chartdata(Questions.indexOf(question), "pie");         
             var chart1 = new Chart(ctx1, config1); 
@@ -190,6 +231,14 @@ function getAllChart()
             var ctx3 = document.getElementById("chart-line" + question.qid.toString()).getContext('2d');
             var config3 = new chartdata(Questions.indexOf(question), "line");
             var chart3 = new Chart(ctx3, config3); 
+
+            var ctx4 = document.getElementById("chart-radar" + question.qid.toString()).getContext('2d');
+            var config4 = new chartdata(Questions.indexOf(question), "radar");
+            var chart4 = new Chart(ctx4, config4); 
+
+            var ctx5 = document.getElementById("chart-polarArea" + question.qid.toString()).getContext('2d');
+            var config5 = new chartdata(Questions.indexOf(question), "polarArea");
+            var chart5 = new Chart(ctx5, config5); 
         };
         
     });

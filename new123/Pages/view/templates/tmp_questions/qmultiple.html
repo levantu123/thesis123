@@ -38,29 +38,6 @@
         <input type="checkbox" data-bind="checked:nextpagedetect" />
         <b class="edit-label"><span>Use to detect next page </span></b>
     </div>
-    <div class="q-options-edit edit-block">
-        <b class="edit-label"><span>Options</span></b>
-        <div style="margin-bottom: 3px;" data-bind="foreach: choices" class="q-choices-edit">
-            <div class="option">
-                <div>
-                    <span class="edit-label">Option </span>
-                    <input class="textbox-edit" data-bind="value: choice_value" />
-                </div>
-                <div class="inline-option" style="height:23px; background-color:transparent">
-                    <input class="button remove-button" style="float:right;" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removechoice" />
-                </div>
-                <div class="inline-option" data-bind="visible:$parent.isscored">
-                    <span data-bind="visible:$parent.isscored">Score</span>
-                    <input class="number-edit" type="number" data-bind="value: score, visible:$parent.isscored" />
-                </div>
-                <div class="inline-option" data-bind="visible:$parent.nextpagedetect">
-                    <span data-bind="visible:$parent.nextpagedetect">Next page</span>
-                    <input class="number-edit" type="number" data-bind="value: nextpage, visible:$parent.nextpagedetect" />
-                </div>
-            </div>
-        </div>
-        <div>
-            <input class="button add-button" type="image" src="/Pages/view/templates/icon/add-button.png" width="20" height="20" data-bind="click:addchoice" />
-        </div>
+    <div class="q-options-edit edit-block" data-bind="template: { name: 'optionsedit', templateUrl: '../../Pages/view/templates/tmp_questions/edit'}">
     </div>
 </div>

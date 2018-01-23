@@ -45,16 +45,17 @@
             @foreach (var item in Model)
             {
                 <li class="w3-bar">
-                    <span onclick="this.parentElement.style.display='none'" class="w3-bar-item w3-button w3-white w3-xlarge w3-right none-underline-link">@Html.ActionLink("X", "Delete", new { id = item.SurveyID })</span>
+                    <span class="w3-bar-item w3-button w3-white w3-xlarge w3-right none-underline-link">@Html.ActionLink("X", "Delete", new { id = item.SurveyID })</span>
                     <span class="w3-large none-underline-link">@Html.ActionLink(item.SurveyName, "jEdit", new { id = item.SurveyID })</span><br>
                     <span class="none-underline-link">@Html.ActionLink("Details", "Details", new { id = item.SurveyID }) | </span>
+                    <span class="none-underline-link">@Html.ActionLink("Report", "Report", new { id = item.SurveyID }) | </span>
                     @if (item.Discontinued)
                     {
-                        <span class="none-underline-link">@Html.ActionLink("Unpublished", "pushlish", new { id = item.SurveyID })</span>
+                        <span class="none-underline-link">@Html.ActionLink("Unpublished", "pushlish", new { id = item.SurveyID }) </span>
                     }
                     @if(!item.Discontinued)
                     { 
-                    <span class="none-underline-link">@Html.ActionLink("Published", "pushlish", new { id = item.SurveyID })</span>
+                    <span class="none-underline-link">@Html.ActionLink("Published", "pushlish", new { id = item.SurveyID }) </span>
 
                     }
                 </li>

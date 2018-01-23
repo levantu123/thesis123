@@ -2,10 +2,9 @@
     <span>Question </span><span data-bind="text: $index"></span>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
+<div class="q-shortdescription"><h4 data-bind="text: shortdescription, visible: useshortdescription"></h4></div>
 
-<select data-bind="options: options, selectedOptions: selectedOptions" class="q-choices">
-        
-</select>
+<select data-bind="options: options, selectedOptions: selectedOptions" class="q-choices"></select>
 
 
 

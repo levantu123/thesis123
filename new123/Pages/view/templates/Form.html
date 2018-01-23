@@ -1,15 +1,25 @@
 ﻿<div class="survey-header-bar">
-    <span>Title: </span>
-    <span data-bind="text: sname"></span>
+    <div class="survey-title">
+        <span data-bind="text: sname"></span>
+    </div>
+    <div class="survey-description">
+        <span data-bind="text: shortdescription"></span>
+    </div>
 </div>
 <div >
     <div data-bind="foreach:pages"  class="tab-content page-block">
         
         <form data-toggle="validator" role="form" class="question-block tab-pane fade in active page-area" data-bind="if: ($index()==0), visible:($index()==0),  attr: {id: (($index()==0)?'page' + ($index()):'none'+$index())}">
             <div class="page-bar">
-                <div class="page-title">
-                    <span>Page </span>
-                    <span data-bind="text:($index()+1)"></span>
+                <div class="page-info">
+                    <div class="page-title">
+                        <span class="t-span-5" data-bind="text:'['+($index()+1)+']'"></span>
+                        <span data-bind="text: page_title" ></span>
+                    </div>
+                    <div class="page-description">
+                        <span class="t-span-5"></span>
+                        <span data-bind="text: shortdescription" ></span>
+                    </div>
                 </div>
             </div>
             <div data-bind="foreach: {data: questions, as: 'question'} " class="question-block">
@@ -38,9 +48,15 @@
 
             <form data-toggle="validator" role="form"  class="question-block tab-pane fade page-area" data-bind="if: ($index()>0),visible: ($index()>0), attr: {id: (($index()>0)?'page' + ($index()):'none'+$index())}">
                 <div class="page-bar">
-                    <div class="page-title">
-                        <span>Page </span>
-                        <span data-bind="text:($index()+1)"></span>
+                    <div class="page-info">
+                        <div class="page-title">
+                            <span class="t-span-5" data-bind="text:'['+($index()+1)+']'"></span>
+                            <span data-bind="text: page_title"></span>
+                        </div>
+                        <div class="page-description">
+                            <span class="t-span-5"></span>
+                            <span data-bind="text: shortdescription"></span>
+                        </div>
                     </div>
                 </div>
                 <div data-bind="foreach: {data: questions, as: 'question'} " class="question-block">

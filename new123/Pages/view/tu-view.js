@@ -1,4 +1,10 @@
-﻿
+﻿function gotoshare() {
+    window.location = "/Surveys/pushlish/" + surveryid;
+    window.location = "/Surveys/Form/" + surveryid;
+}
+function gotopreview() {
+    window.location ="/Surveys/Preview/" + surveryid;
+}
 
 function updateSurveyData() {
     document.getElementById("form-survey").submit();
@@ -57,49 +63,49 @@ function ObjectKoQuestion(question)
         isscored: ko.observable(question.isscored),
         row: ko.observableArray(row),
         column: ko.observableArray(column),
-        choices: ko.observableArray(obsChoices(question.choices)),      
+        choices: ko.observableArray(obsChoices(question.choices)),
         requiredcontent: ko.observable(obsrequiredcontent(question.requiredcontent)),
         inedit: ko.observable(false),
-        autofix: function (data, event) {
-            console.log(this);
+        autofixscore: function (data) {
+            console.log(data);
         },
-        showoption: ko.pureComputed(function ()
-        {
+        showoption: ko.pureComputed(function () {
             return (pself.isscored() || pself.nextpagedetect());
         }),
-        addchoice: function ()
-        {
+        addchoice: function () {
             pself.choices();
-            this.choices.push({ choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0) });
+            this.choices.push({
+                choice_value: ko.observable('new option'), nextpage: ko.observable(-1), score: ko.observable(0),
+                autofixscore: function () {
+                    if (this.score() === "") {
+                        this.score(0);
+                    }
+                }
+            });
         },
-        addrow: function ()
-        {
+        addrow: function () {
             this.row.push({
                 svalue: ko.observable("New row")
             });
         },
-        addcolumn: function ()
-        {
+        addcolumn: function () {
             this.column.push({
                 svalue: ko.observable("New column")
             });
         },
-        removechoice: function ()
-        {
+        removechoice: function () {
             console.log(pself.choices());
             pself.choices.remove(this);
         },
-        
-        removerow: function ()
-        {
+
+        removerow: function () {
             pself.row.remove(this);
         },
-        removecolumn: function ()
-        {
+        removecolumn: function () {
             pself.column.remove(this);
         }
-        
-    }
+
+    };
     return pself;
 }
 
@@ -133,9 +139,12 @@ function ObjectKoSurveyData(sjson) {
     var sname = sjson.sname;
     var nextqid = sjson.nextqid;
     var sshortdescription = sjson.shortdescription;
+    var i = 0;
+    var spagenumbers = [];
     var spages = [];
     sjson.pages.forEach(function (page) {
         spages.push(ObjectKoPage(page));
+        spagenumbers.push(i++);
     });
     var tself = {};
     tself.nextqid = nextqid;
@@ -143,6 +152,7 @@ function ObjectKoSurveyData(sjson) {
     tself.sname = ko.observable( sname );
     tself.shortdescription = ko.observable(sshortdescription);
     tself.pages = ko.observableArray(spages);
+    tself.pagenumbers = spagenumbers;
     tself.removePage = function () {
         tself.pages.remove(this);
     };

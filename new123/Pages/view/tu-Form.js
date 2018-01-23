@@ -77,6 +77,8 @@ function ObjectKoQuestionForm(question) {
         btype: question.btype,
         qtype: ko.observable(question.qtype),
         title: ko.observable(question.title),
+        useshortdescription: ko.observable(question.useshortdescription),
+        shortdescription: ko.observable(question.shortdescription),
         choices: obsChoices(question.choices),
         isrequired: question.isrequired,
         row: ko.observableArray(row),
@@ -212,6 +214,8 @@ function ObjectKoPageForm(page) {
         temp_questions.push(new ObjectKoQuestionForm(question));
     });
     var pself = {
+        page_title: ko.observable(page.page_title),
+        shortdescription: ko.observable(page.shortdescription),
         questions: ko.observableArray(temp_questions),
         getnextpage: function ()
         {
@@ -244,13 +248,15 @@ function ObjectKoSurveyDataForm(sjson) {
     var sname = sjson.sname;
     var spages = [];
     sjson.pages.forEach(function (page)
-    {    
+    {
          spages.push(new ObjectKoPageForm(page));      
     });
-    
-    var sself=  {
+    console.log(sjson);
+    var sself = {
+        
         index: ko.observable(sid),
         sname: ko.observable(sname),
+        shortdescription: ko.observable(sjson.shortdescription),
         pages: ko.observableArray(spages),
         pagesshown: ko.observableArray([]),
         nextpageadd: function (i)
@@ -303,6 +309,7 @@ function ObjectKoSurveyDataForm(sjson) {
             return pi;
         }
     };
+    console.log(sself);
     return sself;
 }
 

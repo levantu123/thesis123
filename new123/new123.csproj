@@ -304,7 +304,13 @@
     <Content Include="Pages\view\templates\icon\text.png" />
     <Content Include="Pages\view\templates\menu.html" />
     <Content Include="Pages\view\templates\Preview.html" />
+    <Content Include="Pages\view\templates\preview_questions\qcheckbox.html" />
+    <Content Include="Pages\view\templates\preview_questions\qdropdown.html" />
+    <Content Include="Pages\view\templates\preview_questions\qmatrix1.html" />
+    <Content Include="Pages\view\templates\preview_questions\qmatrix2.html" />
+    <Content Include="Pages\view\templates\preview_questions\qmultiple.html" />
     <Content Include="Pages\view\templates\preview_questions\qparagraph.html" />
+    <Content Include="Pages\view\templates\preview_questions\qtextbox.html" />
     <Content Include="Pages\view\templates\Report.html" />
     <Content Include="Pages\view\templates\tmp_btns\bcheckbox.html" />
     <Content Include="Pages\view\templates\tmp_btns\bdropdown.html" />
@@ -315,6 +321,8 @@
     <Content Include="Pages\view\templates\tmp_btns\bparagraph.html" />
     <Content Include="Pages\view\templates\tmp_btns\brank.html" />
     <Content Include="Pages\view\templates\tmp_btns\btextbox.html" />
+    <Content Include="Pages\view\templates\tmp_questions\edit\optionsedit.html" />
+    <Content Include="Pages\view\templates\tmp_questions\edit\requitecontendedit.html" />
     <Content Include="Pages\view\templates\tmp_questions\qcheckbox.html" />
     <Content Include="Pages\view\templates\tmp_questions\qdropdown.html" />
     <Content Include="Pages\view\templates\tmp_questions\qmatrix1.html" />
@@ -323,9 +331,6 @@
     <Content Include="Pages\view\templates\tmp_questions\qparagraph.html" />
     <Content Include="Pages\view\templates\tmp_questions\qtextbox.html" />
     <Content Include="Pages\view\templates\view.html" />
-    <Content Include="Pages\view\templates\preview_questions\qdropdown.html" />
-    <Content Include="Pages\view\templates\preview_questions\qmultiple.html" />
-    <Content Include="Pages\view\templates\preview_questions\qtextbox.html" />
     <Content Include="Pages\view\tu-Form.js" />
     <Content Include="Pages\view\tu-menu.js" />
     <Content Include="Pages\src\css\content.css" />

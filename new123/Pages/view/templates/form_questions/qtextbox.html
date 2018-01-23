@@ -1,7 +1,9 @@
 ﻿<div class="question-mask">
-    <span>Question </span><span data-bind="text: $index"></span> 
+    <span>Question </span><span data-bind="text: $index"></span>
 </div>
 <div class="q-title"><h2><span data-bind="text: title"></span></h2></div>
+<div class="q-shortdescription"><h4 data-bind="text: shortdescription, visible: useshortdescription"></h4></div>
+
 <div data-bind="ifnot: isrequired">
     <input type="text" data-bind="value:answer, attr: {type: requiredcontent.inputtype, min: (requiredcontent.inputtype == 'date'?requiredcontent.minday:requiredcontent.nmin), max: (requiredcontent.inputtype == 'date'?requiredcontent.maxday:requiredcontent.nmax), minlength: requiredcontent.min, maxlength: requiredcontent.max, step: requiredcontent.step, pattern: regular()}" />
 </div>

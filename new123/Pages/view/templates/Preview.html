@@ -1,10 +1,87 @@
-﻿<span data-bind="text: sname"></span>
-<span data-bind="text: index"></span>
-<div data-bind="foreach:pages">
-    <div data-bind="foreach: questions" class="question-block">
-        <div>
-            <div class="question-content" data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/preview_questions'}"></div>
-        </div>
+﻿<div class="survey-header-bar">
+    <div class="survey-title">
+        <span data-bind="text: sname"></span>
+    </div>
+    <div class="survey-description">
+        <span data-bind="text: shortdescription"></span>
     </div>
 </div>
+<div>
+    <div data-bind="foreach:pages" class="tab-content page-block">
 
+        <form data-toggle="validator" role="form" class="question-block tab-pane fade in active page-area" data-bind="if: ($index()==0), visible:($index()==0),  attr: {id: (($index()==0)?'page' + ($index()):'none'+$index())}">
+            <div class="page-bar">
+                <div class="page-info">
+                    <div class="page-title">
+                        <span class="t-span-5" data-bind="text:'['+($index()+1)+']'"></span>
+                        <span data-bind="text: page_title"></span>
+                    </div>
+                    <div class="page-description">
+                        <span class="t-span-5"></span>
+                        <span data-bind="text: shortdescription"></span>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="foreach: {data: questions, as: 'question'} " class="question-block">
+                <div>
+                    <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/preview_questions'}"></div>
+                </div>
+            </div>
+            <div class="tab-buttons">
+                <div data-bind="ifnot:  ($index()== $parent.getlength()-1), visible:  ($index()!= $parent.getlength()-1)">
+                    <div class="tab-button">
+                        <input class="w3-btn w3-green" type="submit" value="Next page" data-bind="if: ($index()< $parent.getlength()-2), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                    </div>
+                </div>
+                <div data-bind="if:  ($index()== $parent.getlength()-1) && (!isvalid()), visible:  ($index()== $parent.getlength()-1) && (!isvalid())">
+                    <div class="tab-button">
+                        <input class="w3-btn w3-green" type="submit" value="Submit" data-bind="if: ($index()== $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                    </div>
+                </div>
+                <div data-bind="if:  ($index()== $parent.getlength()-1) && (isvalid()), visible:  ($index()== $parent.getlength()-1) && (isvalid())">
+                    <div class="tab-button">
+                        <input class="w3-btn w3-green" type="submit" value="Submit" />
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <form data-toggle="validator" role="form" class="question-block tab-pane fade page-area" data-bind="if: ($index()>0),visible: ($index()>0), attr: {id: (($index()>0)?'page' + ($index()):'none'+$index())}">
+            <div class="page-bar">
+                <div class="page-info">
+                    <div class="page-title">
+                        <span class="t-span-5" data-bind="text:'['+($index()+1)+']'"></span>
+                        <span data-bind="text: page_title"></span>
+                    </div>
+                    <div class="page-description">
+                        <span class="t-span-5"></span>
+                        <span data-bind="text: shortdescription"></span>
+                    </div>
+                </div>
+            </div>
+            <div data-bind="foreach: {data: questions, as: 'question'} " class="question-block">
+                <div>
+                    <div class="question-content " data-bind="template: { name: qtype, templateUrl: '../../Pages/view/templates/preview_questions'}"></div>
+                </div>
+            </div>
+            <div class="tab-buttons">
+                <div data-bind="ifnot:  ($index()== $parent.getlength()-1), visible:  ($index()!= $parent.getlength()-1)">
+                    <div class="tab-button">
+                        <input class="w3-btn w3-green" type="submit" value="Next page" data-bind="if: ($index()< $parent.getlength()-1), visible: ($index()< $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                    </div>
+                </div>
+                <div data-bind="if:  (($index()== $parent.getlength()-1))&& (!isvalid()), visible: (($index()== $parent.getlength()-1))&& (!isvalid())">
+                    <div class="tab-button">
+                        <input class="w3-btn w3-green" type="submit" value="Submit" data-bind="if: ($index()< $parent.getlength()-1), attr: {'data-toggle':(isvalid()?'tab':'validator'), href: (((getnextpage()==-1)|| (getnextpage()>($parent.getlength()-1)))?'#page'+($index()+1): '#page'+(getnextpage()))}, click: $parent.nextpageadd($index())" />
+                    </div>
+                </div>
+                <div data-bind="if:  (($index()== $parent.getlength()-1))&& (isvalid()), visible:  (($index()== $parent.getlength()-1))&& (isvalid())">
+                    <div class="tab-button">
+                        <input class="w3-btn w3-green" type="button" value="Submit" />
+                    </div>
+                </div>
+                <a class="tab-button w3-btn w3-green" data-toggle="tab" data-bind=" if: ($index()>0),attr: {href: (($parent.getbackpage($index())!=-1)? '#page'+($parent.getbackpage($index())) :'#page'+($index()-1))}">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
