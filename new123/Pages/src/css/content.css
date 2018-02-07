@@ -11,7 +11,10 @@
     margin: 10px 10px 10px 10px;
     min-height: 50px;
 }
-
+.chart {
+    display: block;
+    width: 100%;
+}
 .survey-header-bar {
     background-color: #4caf50;
     padding-top: 10px;

@@ -11,7 +11,8 @@
 }
 .datashow{
     height: 500px;
-    float: left
+    float: left;
+    width:810px;
 }
 .dataeare {
     min-height: 850px;

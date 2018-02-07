@@ -120,58 +120,61 @@ function get1column(column, objectsolution)
 
 function chartdata(column, type)
 {
-    return {
-        type: type,  
+    var backgroundColor = [
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(0, 255, 0, 0.2)',
+        'rgba(255, 0, 0, 0.2)',
+        'rgba(0, 0, 0, 0.2)',
+        'rgba(128, 255, 0, 0.2)',
+        'rgba(255, 99, 132, 0.2)',
+        'rgba(54, 162, 235, 0.2)',
+        'rgba(255, 206, 86, 0.2)',
+        'rgba(75, 192, 192, 0.2)',
+        'rgba(153, 102, 255, 0.2)',
+        'rgba(255, 159, 64, 0.2)',
+        'rgba(0, 255, 0, 0.2)',
+        'rgba(255, 0, 0, 0.2)',
+        'rgba(0, 0, 0, 0.2)',
+        'rgba(128, 255, 0, 0.2)'
+    ];
+    var borderColor = [
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(0, 255, 0, 1)',
+        'rgba(255, 0, 0, 1)',
+        'rgba(0, 0, 0, 1)',
+        'rgba(128, 255, 0, 1)',
+        'rgba(255,99,132,1)',
+        'rgba(54, 162, 235, 1)',
+        'rgba(255, 206, 86, 1)',
+        'rgba(75, 192, 192, 1)',
+        'rgba(153, 102, 255, 1)',
+        'rgba(255, 159, 64, 1)',
+        'rgba(0, 255, 0, 1)',
+        'rgba(255, 0, 0, 1)',
+        'rgba(0, 0, 0, 1)',
+        'rgba(128, 255, 0, 1)'
+    ];
+
+    var forline = {
+        type: type,
 
         data: {
             labels: get1column(column, JSON.parse(getSolutionjson() + "")).label,
             datasets: [{
                 label: '# of Votes',
                 data: get1column(column, JSON.parse(getSolutionjson() + "")).dataPoints,
-                backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(0, 255, 0, 0.2)',
-                    'rgba(255, 0, 0, 0.2)',
-                    'rgba(0, 0, 0, 0.2)',
-                    'rgba(128, 255, 0, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(0, 255, 0, 0.2)',
-                    'rgba(255, 0, 0, 0.2)',
-                    'rgba(0, 0, 0, 0.2)',
-                    'rgba(128, 255, 0, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(0, 255, 0, 1)',
-                    'rgba(255, 0, 0, 1)',
-                    'rgba(0, 0, 0, 1)',
-                    'rgba(128, 255, 0, 1)',
-                    'rgba(255,99,132,1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(0, 255, 0, 1)',
-                    'rgba(255, 0, 0, 1)',
-                    'rgba(0, 0, 0, 1)',
-                    'rgba(128, 255, 0, 1)'
-                ],
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
                 borderWidth: 1
             }]
         },
@@ -190,14 +193,75 @@ function chartdata(column, type)
             },
             responsive: true
         }
-       // data: [
-        //    {
-                // Change type to "bar", "area", "spline", "pie",etc.
-        //        type: "pie",
-             //   dataPoints: get1column(column, JSON.parse(getSolutionjson() + "")).dataPoints
-         //   }
-      //  ]
-    }
+    };
+        var forpie = {
+            type: type,
+
+            data: {
+                labels: get1column(column, JSON.parse(getSolutionjson() + "")).label,
+                datasets: [{
+                    label: '# of Votes',
+                    data: get1column(column, JSON.parse(getSolutionjson() + "")).dataPoints,
+                    backgroundColor: backgroundColor,
+                    borderColor: borderColor,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+
+
+            }
+            
+    };
+        var forpolar = {
+            type: type,
+
+            data: {
+                labels: get1column(column, JSON.parse(getSolutionjson() + "")).label,
+                datasets: [{
+                    label: '# of Votes',
+                    data: get1column(column, JSON.parse(getSolutionjson() + "")).dataPoints,
+                    backgroundColor: backgroundColor,
+                    borderColor: borderColor,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+
+
+                responsive: true,
+                legend: {
+                    position: 'right',
+                },
+                title: {
+                    display: true,
+                    text: '# of votes'
+                },
+                scale: {
+                    ticks: {
+                        beginAtZero: true
+                    },
+                    reverse: false
+                },
+                animation: {
+                    animateRotate: false,
+                    animateScale: true
+                }
+            }
+
+        };
+        var forreturn;
+        if ((type === 'line') || (type === 'bar')){
+            forreturn = forline;
+        };
+        if ((type === 'pie') || (type === 'radar')) {
+            forreturn = forpie;
+        };
+        if ((type === 'polarArea')) {
+            forreturn = forpolar;
+        };
+        return forreturn;
+    
 }
 
 function getAllChart()

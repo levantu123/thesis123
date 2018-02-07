@@ -1,10 +1,10 @@
 ﻿@model new123.Models.Survey
 
 @{
-                /**/
+    /**/
 
-                ViewBag.Title = "Report";
-                Layout = "~/Views/Shared/SurveyEditLayout.cshtml";
+    ViewBag.Title = "Report";
+    Layout = "~/Views/Shared/SurveyEditLayout.cshtml";
 }
 <script type="text/javascript">
 
@@ -13,9 +13,16 @@
 @Styles.Render("~/Pages/src/css/report.css")
 @Scripts.Render("~/Pages/view/Global.js")
 @Scripts.Render("~/Pages/view/tu-report.js")
+@Scripts.Render("~/Pages/view/util.js")
 @Scripts.Render("~/Pages/view/mainreport.js")
 
-
+<style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+    }
+</style>
 <h2>Report</h2>
 <div id='survey-content'>
     <div class="report-area" data-bind="template: { name: whichTemplateToUse5, data: items4 }"></div>

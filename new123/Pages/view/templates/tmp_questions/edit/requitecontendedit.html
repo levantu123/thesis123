@@ -2,10 +2,10 @@
 <div><b class="edit-label w3-quarter"><span>Used</span></b>  <input type="checkbox" data-bind="checked: used" /></div>
 <div data-bind="visible: used">
     <div class="inline-option full">
-        <b class="edit-label">
+        <b class="edit-label" data-bind="visible: (question.qtype() != 'qparagraph')">
             <span class="t-span-15">Input type</span>
         </b>
-        <select data-bind="value: inputtype">
+        <select data-bind="value: inputtype, visible: (question.qtype() != 'qparagraph')">
             <option data-bind="text: 'text'">text</option>
             <option data-bind="text: 'number'">number</option>
             <option data-bind="text: 'color'">color</option>

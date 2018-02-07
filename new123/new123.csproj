@@ -342,6 +342,7 @@
     <Content Include="Pages\src\koExternalTemplateEngine_all.js" />
     <Content Include="Pages\view\tu-report.js" />
     <Content Include="Pages\view\tu-view.js" />
+    <Content Include="Pages\view\util.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
