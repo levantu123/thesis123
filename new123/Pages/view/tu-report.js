@@ -278,7 +278,7 @@ function getAllChart()
             ctx0.innerHTML += "<span><b>Anwser List: </b></span><br/>";
             data.label.forEach(function (l) {
                 ctx0.innerHTML += "Value: \"" + l + " | ";
-                ctx0.innerHTML += "Quality: " + data.dataPoints[data.label.indexOf(l)] + " | ";
+                ctx0.innerHTML += "quantily: " + data.dataPoints[data.label.indexOf(l)] + " | ";
                 ctx0.innerHTML += "Percentage: " + (data.dataPoints[data.label.indexOf(l)] * 100 / sum).toFixed(2)+ "%\" ";
                 ctx0.innerHTML += "</br>"
             });

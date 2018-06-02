@@ -15,7 +15,7 @@
 <hr />
 <div class="dataeare">
     <ul class="datashowmenu nav nav-pills nav-stacked" data-bind="foreach: Charts">
-        <li><a data-toggle="tab" onclick="getAllChart()" data-bind="attr:{ href: '#question'+ $index()}, text: 'Question '+ $index()"></a></li>
+        <li><a data-toggle="tab" onclick="getAllChart()" data-bind="attr:{ href: '#question'+ $index()}, text: 'Question '+ ($index()+1)"></a></li>
     </ul>
 
     <div class="tab-content datashow" data-bind="foreach: Charts">
@@ -29,23 +29,28 @@
                 <li class=""><a data-toggle="tab" data-bind="attr:{href: '#question'+$index()+'radar'}, text: 'Radar'"></a></li>
                 <li class=""><a data-toggle="tab" data-bind="attr:{href: '#question'+$index()+'polarArea'}, text: 'polarArea'"></a></li>
             </ul>
-            <div class="tab-content">
+            <div class="tab-content tu-tab">
                 <div class="tab-pane fade canvas-holder" style="width:100%" data-bind="attr:{id: 'question'+$index()+'polarArea'}">
-                    <canvas class="chart" data-bind="attr:{id: 'chart-polarArea' + qid}, visible: isShowLine" ></canvas>
+                    <span><b>Question: </b></span><span data-bind="text: title"></span>
+                    <canvas class="chart" data-bind="attr:{id: 'chart-polarArea' + qid}, visible: isShowLine"></canvas>
                 </div>
                 <div style="padding-left: 40px; padding-top: 20px;" class="tab-pane fade in active" data-bind="attr:{id: 'question'+$index()+'data'}">
                     <span data-bind="text: title"></span>
                 </div>
                 <div class="tab-pane fade" data-bind="attr:{id: 'question'+$index()+'pie'}">
+                    <span><b>Question: </b></span><span data-bind="text: title"></span>
                     <canvas data-bind="attr:{id: 'chart-pie' + qid}, visible: isShowPie" width="200" height="200"></canvas>
                 </div>
                 <div class="tab-pane fade" data-bind="attr:{id: 'question'+$index()+'bar'}">
+                    <span><b>Question: </b></span><span data-bind="text: title"></span>
                     <canvas data-bind="attr:{id: 'chart-bar' + qid}, visible: isShowBar" width="200" height="200"></canvas>
                 </div>
                 <div class="tab-pane fade" data-bind="attr:{id: 'question'+$index()+'line'}">
+                    <span><b>Question: </b></span><span data-bind="text: title"></span>
                     <canvas data-bind="attr:{id: 'chart-line' + qid}, visible: isShowLine" width="200" height="200"></canvas>
                 </div>
                 <div class="tab-pane fade" data-bind="attr:{id: 'question'+$index()+'radar'}">
+                    <span><b>Question: </b></span><span data-bind="text: title"></span>
                     <canvas data-bind="attr:{id: 'chart-radar' + qid}, visible: isShowLine" width="200" height="200"></canvas>
                 </div>
 

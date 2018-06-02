@@ -19,3 +19,7 @@
     display: block;
     background-color: #eff5f2;
 }
+.tu-tab div{
+    padding-left:40px;
+    padding-top: 20px;
+}

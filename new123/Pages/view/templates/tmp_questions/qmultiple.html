@@ -1,5 +1,5 @@
 ﻿<div class="question-mask">
-    <span>Question </span><span data-bind="text: $index"></span>
+    <span>Question </span><span data-bind="text: $index()+1"></span>
     <div class="q-btns">
         <input type="checkbox" value="Edit" data-bind="checked: inedit" />
         <input class="button remove-button" type="image" src="/Pages/view/templates/icon/remove-2-button.png" width="20" height="20" data-bind="click: $parent.removeQuestion" />
